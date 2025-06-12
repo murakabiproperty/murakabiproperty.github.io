@@ -1,0 +1,40 @@
+Property Management System Installation
+==========================================
+
+Welcome to the Property Management System installer!
+
+This software will install:
+✓ Property Management Desktop Application
+✓ Airtable Integration for cloud sync
+✓ Image management capabilities
+✓ Google Maps integration
+✓ Complete documentation and user guides
+
+SYSTEM REQUIREMENTS:
+- Windows 7 or later (64-bit recommended)
+- At least 500MB free disk space
+- Internet connection for Airtable sync (optional)
+- Microsoft Visual C++ Redistributable (will be checked)
+
+WHAT WILL BE INSTALLED:
+- Main application executable
+- Configuration files
+- Documentation and user guides
+- Desktop and Start Menu shortcuts
+- File associations for .pmdb files
+
+AIRTABLE INTEGRATION:
+You will be prompted to enter your Airtable credentials during installation.
+If you don't have them ready, you can skip this step and configure later.
+
+To get your Airtable credentials:
+1. Go to https://airtable.com/account
+2. Generate your Personal Access Token (API Key)
+3. Get your Base ID from https://airtable.com/api
+
+The installer will automatically configure the application with your credentials.
+
+Click Next to continue with the installation.
+
+For support or questions, visit:
+https://github.com/yourusername/property-management 

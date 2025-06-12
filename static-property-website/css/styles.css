@@ -1,0 +1,585 @@
+/* Custom styles to complement Tailwind CSS */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom hover effects */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom form styles */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px var(--uni-blue, #00aeef);
+}
+
+/* Responsive image container */
+.img-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Custom section spacing */
+.section-spacing {
+    padding: 4rem 0;
+}
+
+/* Custom text styles */
+.text-gradient {
+    background: linear-gradient(45deg, #3B82F6, #2563EB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Custom card styles */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    box-shadow: 0 10px 20px var(--uni-blue, #00aeef, 0.15);
+    border-color: var(--uni-blue);
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    .desktop-menu {
+        display: none;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --uni-orange: #f7931e;
+    --uni-blue: #00aeef;
+    --uni-green: #39b54a;
+    --uni-dark: #231f20;
+    --bg-light: #f7f7f9;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--uni-dark);
+    margin: 0;
+    padding: 0;
+}
+
+nav, footer {
+    background: #232124;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+nav .text-xl, .footer-logo, .brand-title {
+    color: var(--uni-orange);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    color: var(--uni-dark);
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+input, textarea {
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: #fff;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus {
+    border: 1.5px solid var(--uni-blue);
+    box-shadow: 0 0 0 2px rgba(0,174,239,0.08);
+    outline: none;
+}
+
+.card-hover {
+    border-radius: 1.25rem;
+    box-shadow: 0 2px 16px rgba(35,33,32,0.06);
+    background: #fff;
+    transition: box-shadow 0.2s, transform 0.2s;
+    overflow: visible;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.card-hover:hover {
+    box-shadow: 0 8px 32px rgba(35,33,32,0.13);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.img-container {
+    aspect-ratio: 4/3;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+footer {
+    border-top: 4px solid var(--uni-orange);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+nav .brand-title {
+    font-size: 1.5rem;
+    color: var(--uni-orange);
+    font-weight: 700;
+}
+
+nav a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-left: 1.5rem;
+    transition: color 0.2s;
+}
+nav a:hover {
+    color: var(--uni-orange);
+}
+
+.hero {
+    background: linear-gradient(90deg, #fff 60%, #f7f7f9 100%);
+    padding: 4rem 0 3rem 0;
+    text-align: center;
+}
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--uni-dark);
+    margin-bottom: 1rem;
+}
+.hero-desc {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    nav .brand-title {
+        font-size: 1.1rem;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 8px;
+}
+
+.footer-logo {
+    max-height: 48px;
+    width: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+    border-radius: 0.5rem;
+}
+nav .flex.items-center {
+    align-items: center;
+    gap: 0.75rem;
+}
+nav .brand-title {
+    font-size: 1.5rem;
+    color: var(--uni-orange);
+    font-weight: 700;
+    line-height: 1;
+}
+nav {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+}
+
+/* Logo positioning */
+nav .flex.items-center.space-x-2 {
+    flex-shrink: 0;
+    width: auto;
+}
+
+nav .footer-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+nav .text-sm {
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Mobile bottom navigation */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 64px; /* Add padding to prevent content from being hidden behind bottom nav */
+    }
+    
+    nav .footer-logo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    nav .text-sm {
+        font-size: 0.875rem;
+    }
+    
+    nav .mr-8 {
+        margin-right: 1rem;
+    }
+}
+
+/* Bottom navigation styling */
+.bottom-nav {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Active state for bottom navigation */
+.bottom-nav a.active {
+    color: var(--uni-orange);
+}
+
+.bottom-nav a.active svg {
+    color: var(--uni-orange);
+}
+
+/* Smooth transitions for bottom nav */
+.bottom-nav a {
+    transition: all 0.2s ease;
+}
+
+.bottom-nav a:active {
+    transform: scale(0.95);
+}
+
+/* Modern Button Styles */
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* Primary Orange Buttons - Modern Gradient */
+.bg-orange-500 {
+    background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(247, 147, 30, 0.3);
+    border: none;
+    padding: 0.875rem 1.5rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+.hover\:bg-orange-600:hover {
+    background: linear-gradient(135deg, #e67e00 0%, #e55a2b 100%) !important;
+    box-shadow: 0 6px 20px rgba(247, 147, 30, 0.4) !important;
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Hero Button - Extra Special */
+.hero-btn {
+    background: linear-gradient(135deg, #f7931e 0%, #00aeef 100%) !important;
+    color: white !important;
+    padding: 1rem 2.5rem !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.3);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    width: auto !important;
+    display: inline-flex !important;
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hero-btn:hover::before {
+    left: 100%;
+}
+
+.hero-btn:hover {
+    box-shadow: 0 12px 35px rgba(247, 147, 30, 0.4) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    background: linear-gradient(135deg, #e67e00 0%, #0d7ab8 100%) !important;
+}
+
+/* Property Card Buttons - Outline Style */
+.card-hover button {
+    background: white !important;
+    color: #f7931e !important;
+    border: 2px solid #f7931e !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px !important;
+    font-weight: 600;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(247, 147, 30, 0.1);
+}
+
+.card-hover button:hover {
+    background: #f7931e !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(247, 147, 30, 0.3);
+    transform: translateY(-1px);
+    border-color: #f7931e !important;
+}
+
+/* Contact Form Button - Professional Blue */
+.contact-btn {
+    background: linear-gradient(135deg, #00aeef 0%, #0d7ab8 100%) !important;
+    color: white !important;
+    padding: 1rem 2rem !important;
+    border-radius: 10px !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+    width: 100% !important;
+}
+
+.contact-btn:hover {
+    background: linear-gradient(135deg, #0d7ab8 0%, #0a5f8a 100%) !important;
+    box-shadow: 0 6px 20px rgba(0, 174, 239, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* Modal Button Fixes - Ensure Uniform Size */
+.flex.space-x-4 button {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+/* Primary Modal Button */
+.flex.space-x-4 button[type="submit"] {
+    background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 3px 10px rgba(247, 147, 30, 0.3) !important;
+}
+
+.flex.space-x-4 button[type="submit"]:hover {
+    background: linear-gradient(135deg, #e67e00 0%, #e55a2b 100%) !important;
+    box-shadow: 0 4px 15px rgba(247, 147, 30, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Secondary Modal Button */
+.flex.space-x-4 button[onclick="hideBuyModal()"] {
+    background: #f8f9fa !important;
+    color: #6c757d !important;
+    border: 2px solid #e9ecef !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.flex.space-x-4 button[onclick="hideBuyModal()"]:hover {
+    background: #e9ecef !important;
+    color: #495057 !important;
+    border-color: #dee2e6 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure buttons are visible */
+.card-hover button {
+    z-index: 10;
+    position: relative;
+    margin-top: auto;
+}
+
+.card-hover .p-6 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-hover .img-container {
+    overflow: hidden;
+    border-radius: 1.25rem 1.25rem 0 0;
+}
+
+/* Sold Property Styles */
+.sold-image {
+    filter: grayscale(30%) brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.sold-badge {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+    transform: rotate(-15deg);
+    border: 3px solid white;
+    animation: soldPulse 2s ease-in-out infinite;
+}
+
+.sold-text {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes soldPulse {
+    0%, 100% {
+        transform: rotate(-15deg) scale(1);
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        transform: rotate(-15deg) scale(1.05);
+        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.6);
+    }
+}
+
+.sold-content {
+    opacity: 0.7;
+}
+
+.card-hover.sold-card {
+    border: 2px solid #fca5a5;
+    background: #fef7f7;
+}
+
+.card-hover.sold-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+}
+
+/* Modal z-index fix untuk mencegah tombol menembus popup */
+#buyModal {
+    z-index: 9999 !important;
+}
+
+#buyModal .bg-white {
+    z-index: 10000 !important;
+    position: relative;
+}
+
+/* Pastikan modal overlay benar-benar menutupi layar */
+#buyModal.fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* Pastikan backdrop modal tidak bisa diklik tombol dari belakang */
+#buyModal .bg-black {
+    pointer-events: auto;
+}
+
+/* Pastikan content modal tetap di atas */
+#buyModal .bg-white.rounded-lg {
+    z-index: 10001 !important;
+    position: relative;
+}
+
+/* Debugging: Pastikan tidak ada elemen lain yang menghalangi modal */
+#buyModal {
+    pointer-events: auto !important;
+}
+
+#buyModal .bg-white {
+    pointer-events: auto !important;
+}
+
+/* Pastikan semua tombol dalam modal berfungsi */
+#buyModal button {
+    pointer-events: auto !important;  
+    z-index: 10002 !important;
+    position: relative;
+} 

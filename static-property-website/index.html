@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni Property | PT. Universal Karya Sentosa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-200">
+    <!-- Navigasi -->
+    <nav class="shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 flex items-center py-4">
+            <!-- Bagian logo - diposisikan di kiri -->
+            <div class="flex items-center space-x-2 mr-8">
+                <img src="assets/logo.png" alt="Logo Uni Property" class="h-8 w-8 footer-logo">
+                <div class="text-sm font-bold text-orange-500">Uni Property</div>
+            </div>
+            <!-- Menu navigasi - mengambil ruang tersisa -->
+            <div class="flex-1 flex justify-end">
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-200 hover:text-orange-400">Beranda</a>
+                    <a href="#properties" class="text-gray-200 hover:text-orange-400">Properti</a>
+                    <a href="#about" class="text-gray-200 hover:text-orange-400">Tentang Kami</a>
+                    <a href="#contact" class="text-gray-200 hover:text-orange-400">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bagian Hero -->
+    <header class="bg-gradient-to-r from-orange-400 via-orange-300 to-blue-400 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Selamat Datang di Uni Property</h1>
+            <p class="text-xl mb-8 text-gray-700">Solusi properti terpercaya dari PT. Universal Karya Sentosa</p>
+            <button class="hero-btn">
+                Lihat Properti Unggulan
+            </button>
+        </div>
+    </header>
+
+    <!-- Bagian Properti Unggulan -->
+    <section id="properties" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-orange-500">Properti Unggulan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kartu Properti 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="img-container">
+                        <img src="https://via.placeholder.com/400x300" alt="Apartemen Modern" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Apartemen Modern</h3>
+                        <div class="space-y-2 mb-4">
+                            <p class="text-gray-600"><span class="font-semibold">Lokasi:</span> Pusat Kota</p>
+                            <p class="text-gray-600"><span class="font-semibold">Luas:</span> 120 m²</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Tidur:</span> 2</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Mandi:</span> 2</p>
+                        </div>
+                        <p class="text-2xl font-bold text-orange-500 mb-4">Rp 3,5 Miliar</p>
+                        <button onclick="showBuyModal('Apartemen Modern', 'Rp 3,5 Miliar')" class="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+                <!-- Kartu Properti 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="img-container">
+                        <img src="https://via.placeholder.com/400x300" alt="Villa Mewah" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Villa Mewah</h3>
+                        <div class="space-y-2 mb-4">
+                            <p class="text-gray-600"><span class="font-semibold">Lokasi:</span> Pesisir Pantai</p>
+                            <p class="text-gray-600"><span class="font-semibold">Luas:</span> 250 m²</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Tidur:</span> 4</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Mandi:</span> 3</p>
+                        </div>
+                        <p class="text-2xl font-bold text-orange-500 mb-4">Rp 7,5 Miliar</p>
+                        <button onclick="showBuyModal('Villa Mewah', 'Rp 7,5 Miliar')" class="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+                <!-- Kartu Properti 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="img-container">
+                        <img src="https://via.placeholder.com/400x300" alt="Rumah Keluarga" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Rumah Keluarga</h3>
+                        <div class="space-y-2 mb-4">
+                            <p class="text-gray-600"><span class="font-semibold">Lokasi:</span> Perumahan Elite</p>
+                            <p class="text-gray-600"><span class="font-semibold">Luas:</span> 180 m²</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Tidur:</span> 3</p>
+                            <p class="text-gray-600"><span class="font-semibold">Kamar Mandi:</span> 2</p>
+                        </div>
+                        <p class="text-2xl font-bold text-orange-500 mb-4">Rp 5 Miliar</p>
+                        <button onclick="showBuyModal('Rumah Keluarga', 'Rp 5 Miliar')" class="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Pembelian -->
+    <div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center" style="z-index: 9999;">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative" style="z-index: 10000;">
+            <h3 class="text-2xl font-bold mb-4 text-orange-500">Pembelian Properti</h3>
+            <p class="text-gray-600 mb-4">Properti: <span id="modalPropertyName"></span></p>
+            <p class="text-gray-600 mb-6">Harga: <span id="modalPropertyPrice"></span></p>
+            <form id="buyForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2" for="buyerName">Nama Lengkap</label>
+                    <input type="text" id="buyerName" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2" for="buyerPhone">Nomor Telepon</label>
+                    <input type="tel" id="buyerPhone" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Lokasi Properti</label>
+                    <div id="mapPreview" class="w-full h-32 bg-gray-100 rounded-lg border cursor-pointer hover:shadow-md transition-shadow duration-200 flex items-center justify-center text-gray-500">
+                        <div class="text-center">
+                            <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <p class="text-sm">Klik untuk melihat di Google Maps</p>
+                            <p id="modalLocationText" class="text-xs font-semibold text-orange-500 mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-orange-500 text-white py-4 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
+                        Konfirmasi Pembelian
+                    </button>
+                    <button type="button" onclick="hideBuyModal()" class="flex-1 bg-gray-100 text-gray-600 py-4 rounded-lg font-semibold hover:bg-gray-200 border-2 border-gray-300 hover:border-gray-400 transition duration-300">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bagian Tentang -->
+    <section id="about" class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-orange-500">Tentang Uni Property</h2>
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="text-gray-600 mb-6">
+                    Uni Property adalah bagian dari PT. Universal Karya Sentosa, berkomitmen memberikan solusi properti terbaik dan terpercaya untuk Anda. Dengan pengalaman bertahun-tahun di industri properti, kami siap membantu Anda menemukan hunian atau investasi impian dengan layanan profesional dan personal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Kontak -->
+    <section id="contact" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-orange-500">Hubungi Kami</h2>
+            <div class="max-w-2xl mx-auto">
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="name">Nama</label>
+                        <input type="text" id="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="email">Email</label>
+                        <input type="email" id="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="message">Pesan</label>
+                        <textarea id="message" rows="4" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500"></textarea>
+                    </div>
+                    <button type="submit" class="contact-btn">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="assets/logo.png" alt="Logo Uni Property" class="h-10 w-10 footer-logo">
+                <span class="font-bold text-orange-500">Uni Property</span>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="mb-1">&copy; 2024 Uni Property. PT. Universal Karya Sentosa. Hak Cipta Dilindungi.</p>
+                <p class="text-sm">Solusi Properti Terpercaya untuk Masa Depan Anda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navigasi Bawah Mobile -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 z-40">
+        <div class="grid grid-cols-4 h-16">
+            <a href="#" class="flex flex-col items-center justify-center text-gray-300 hover:text-orange-400 transition-colors">
+                <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <span class="text-xs">Beranda</span>
+            </a>
+            <a href="#properties" class="flex flex-col items-center justify-center text-gray-300 hover:text-orange-400 transition-colors">
+                <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                <span class="text-xs">Properti</span>
+            </a>
+            <a href="#about" class="flex flex-col items-center justify-center text-gray-300 hover:text-orange-400 transition-colors">
+                <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="text-xs">Tentang</span>
+            </a>
+            <a href="#contact" class="flex flex-col items-center justify-center text-gray-300 hover:text-orange-400 transition-colors">
+                <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span class="text-xs">Hubungi</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/airtable-config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
