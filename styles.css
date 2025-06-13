@@ -406,14 +406,14 @@ h6 {
 }
 
 .properties-grid {
-  max-width: 900px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  justify-content: center;
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
   gap: 2rem !important;
   align-items: stretch !important;
+  justify-content: center;
 }
 
 .property-card {
@@ -1587,4 +1587,18 @@ textarea.form-input {
 
 .modal-map img.no-filter {
   filter: none !important;
+}
+
+@media (max-width: 900px) {
+  .properties-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .properties-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+  }
 }

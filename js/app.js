@@ -64,6 +64,14 @@ function renderProperties(properties, reset = false) {
         propertiesPerPage = getPropertiesPerPage();
     }
 
+    if (properties.length === 0) {
+        propertiesContainer.innerHTML = `<div class="col-span-full text-center py-12"><p class="text-gray-600">Tidak ada properti yang tersedia saat ini.</p></div>`;
+        // Hapus tombol load more jika ada
+        let loadMoreBtn = document.getElementById('load-more-properties');
+        if (loadMoreBtn) loadMoreBtn.remove();
+        return;
+    }
+
     // Tentukan properti yang akan ditampilkan
     const nextIndex = currentPropertyIndex + propertiesPerPage;
     const propertiesToShow = properties.slice(currentPropertyIndex, nextIndex);
