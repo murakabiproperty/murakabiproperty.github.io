@@ -1,3 +1,4 @@
+/* CSS Start */
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -102,7 +103,7 @@ h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border: none;
   border-radius: var(--border-radius);
   font-size: 1rem;
@@ -373,7 +374,7 @@ h6 {
 }
 
 .search-input {
-  padding: 14px 16px;
+  padding: 14px 18px;
   border: 2px solid var(--gray-300);
   border-radius: var(--border-radius);
   font-size: 1rem;
@@ -405,11 +406,14 @@ h6 {
 }
 
 .properties-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-  align-items: stretch;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 2rem !important;
+  align-items: stretch !important;
 }
 
 .property-card {
@@ -467,6 +471,24 @@ h6 {
   color: var(--white);
 }
 
+.property-badge.sold {
+  background: #e53935;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 0.6em 2em;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 16px rgba(229,57,53,0.25);
+  letter-spacing: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  opacity: 0.95;
+}
+
 .property-overlay {
   position: absolute;
   top: 0;
@@ -486,7 +508,7 @@ h6 {
 }
 
 .property-content {
-  padding: 1.5rem;
+  padding: 2rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -758,7 +780,7 @@ h6 {
 
 .form-input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: 2px solid var(--gray-300);
   border-radius: var(--border-radius);
   font-size: 1rem;
@@ -952,22 +974,22 @@ textarea.form-input {
 .modal-header {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
   color: var(--dark-color);
-  padding: 1.5rem;
+  padding: 2.5rem;
   position: relative;
 }
 
 .modal-title {
   margin: 0;
   font-size: 1.5rem;
-  padding-right: 2rem;
+  padding-right: 3rem;
   color: var(--dark-color);
   font-weight: 700;
 }
 
 .modal-close {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 2.5rem;
+  right: 2.5rem;
   background: none;
   border: none;
   color: var(--dark-color);
@@ -981,7 +1003,7 @@ textarea.form-input {
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 2rem;
   max-height: calc(90vh - 120px);
   overflow-y: auto;
 }
@@ -990,16 +1012,16 @@ textarea.form-input {
 .modal-property-details {
   background: var(--gray-100);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem;
   margin-bottom: 2rem;
 }
 
 .property-detail-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.2rem;
   margin-bottom: 1rem;
-  padding: 0.75rem;
+  padding: 1.2rem;
   background: var(--gray-200);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
@@ -1061,6 +1083,7 @@ textarea.form-input {
   font-size: 1.2rem;
   color: var(--white);
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--gray-300);
 }
@@ -1084,7 +1107,7 @@ textarea.form-input {
 
 .modal-form-input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: 2px solid var(--gray-300);
   border-radius: var(--border-radius);
   font-size: 1rem;
@@ -1214,24 +1237,55 @@ textarea.form-input {
 @media (max-width: 768px) {
   .nav-menu {
     position: fixed;
-    left: -100%;
-    top: 80px;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
     flex-direction: column;
     background-color: var(--gray-200);
     width: 100%;
     text-align: center;
-    transition: 0.3s;
+    transition: top 0.45s cubic-bezier(0.77,0,0.18,1), transform 0.45s cubic-bezier(0.77,0,0.18,1), opacity 0.35s;
     box-shadow: var(--shadow-lg);
     padding: 2rem 0;
     border: 1px solid var(--gray-300);
+    z-index: 1200;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .nav-menu.active {
-    left: 0;
+    top: 100%;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-toggle {
     display: flex;
+  }
+
+  .hero {
+    height: auto;
+    padding: 90px 0 6rem;
+    background-position: center center;
+    background-size: cover;
+    display: block;
+  }
+
+  .hero-content {
+    padding: 0 15px;
+  }
+
+  .hero-stats {
+    position: static;
+    transform: none;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    flex: 1 1 100px;
   }
 
   .hero-title {
@@ -1247,44 +1301,28 @@ textarea.form-input {
     align-items: center;
   }
 
-  .hero-stats {
-    position: static;
-    transform: none;
-    margin-top: 3rem;
-    flex-direction: row;
-    gap: 2rem;
-    justify-content: space-around;
-    padding: 0 1rem;
-  }
-
-  .stat-item {
-    text-align: center;
-    flex: 1;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-  }
-
   .section-title {
     font-size: 2rem;
   }
 
-  .search-form {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .search-form,
+  .search-form-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
   }
-
-  .search-form .btn {
-    width: 100%;
+  .filter-group,
+  .filter-group-button,
+  .btn-search {
+    width: 100% !important;
+  }
+  .filter-input {
+    width: 100% !important;
   }
 
   .properties-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
   }
 
   .services-grid {
@@ -1364,6 +1402,49 @@ textarea.form-input {
   .property-detail-item div {
     align-items: center;
   }
+
+  .search-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-group-button {
+    grid-column: 1 / -1;
+  }
+
+  .search-form-grid .btn {
+    width: 100%;
+  }
+
+  /* Filter responsive improvements */
+  .search-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .filter-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    background-position: right 0.8rem center;
+  }
+
+  .filter-group-button {
+    grid-column: 1;
+    margin-top: 0.5rem;
+  }
+
+  .btn-search {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -1398,6 +1479,21 @@ textarea.form-input {
   .contact-form {
     padding: 2rem 1.5rem;
   }
+
+  /* Filter improvements for very small screens */
+  .filter-label {
+    font-size: 0.8rem;
+  }
+
+  .filter-input {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-search {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* Smooth scrolling enhancement */
@@ -1423,4 +1519,72 @@ textarea.form-input {
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.7);
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.8);
   }
+}
+
+/* Filter form styles - tambahan untuk form filter yang baru */
+.search-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 0.5rem;
+}
+
+.filter-label i {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+.filter-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid var(--gray-300);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: var(--gray-100);
+  color: var(--gray-800);
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1em;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(241, 157, 59, 0.2);
+}
+
+.filter-group-button {
+  grid-column: -1;
+}
+
+.btn-search {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-search i {
+  margin-right: 0.5rem;
+}
+
+.modal-map img.no-filter {
+  filter: none !important;
 }
