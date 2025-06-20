@@ -1624,7 +1624,7 @@ textarea.form-input {
 .filter-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--gray-700);
+  color: var(--secondary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -1640,8 +1640,8 @@ textarea.form-input {
   border-radius: var(--border-radius);
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
-  background: var(--gray-100);
-  color: var(--gray-800);
+  background: var(--white);
+  color: var(--secondary-color);
   transition: var(--transition);
   appearance: none;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
@@ -1654,6 +1654,7 @@ textarea.form-input {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(241, 157, 59, 0.2);
+  background: var(--white);
 }
 
 .filter-group-button {

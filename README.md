@@ -155,6 +155,17 @@ env:
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 ```
 
+#### **GitHub Pages**
+```bash
+# Simple demo deployment
+git push origin main
+# Enable GitHub Pages di repository settings
+
+# Production dengan real data
+# Setup GitHub Secrets, lalu push
+```
+📖 **Panduan lengkap**: [`GITHUB_PAGES_GUIDE.md`](GITHUB_PAGES_GUIDE.md)
+
 #### **Traditional Web Hosting**
 - Upload files via FTP
 - Gunakan server-side proxy untuk API calls
