@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni Property - PT. Universal Karya Sentosa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.png" alt="Uni Property Logo" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#properties" class="nav-link">Properti</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Layanan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Temukan Rumah <span class="highlight">Impian</span> Anda
+                </h1>
+                <p class="hero-subtitle">
+                    Kami menyediakan properti terbaik dengan lokasi strategis dan harga terjangkau. 
+                    Wujudkan impian memiliki rumah bersama PT. Universal Karya Sentosa.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#properties" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        Cari Properti
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Konsultasi Gratis
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Properti Terjual</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Klien Puas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <h3>Cari Properti Impian Anda</h3>
+                <form class="search-form">
+                    <div class="search-group">
+                        <select class="search-input">
+                            <option>Jenis Properti</option>
+                            <option>Rumah</option>
+                            <option>Apartemen</option>
+                            <option>Ruko</option>
+                            <option>Tanah</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <input type="text" class="search-input" placeholder="Lokasi">
+                    </div>
+                    <div class="search-group">
+                        <select class="search-input">
+                            <option>Rentang Harga</option>
+                            <option>< 500 Juta</option>
+                            <option>500 Juta - 1 Miliar</option>
+                            <option>1 - 2 Miliar</option>
+                            <option>> 2 Miliar</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        Cari
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section id="properties" class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Properti Unggulan</h2>
+                <p class="section-subtitle">Pilihan terbaik properti dengan kualitas premium dan lokasi strategis</p>
+            </div>
+            
+            <div class="properties-grid">
+                <div class="property-card" data-area="120" data-bedrooms="3" data-bathrooms="2">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop" alt="Modern House">
+                        <div class="property-badge">Terbaru</div>
+                        <div class="property-overlay">
+                            <button class="btn btn-white">Lihat Detail</button>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">Rp 1.2 Miliar</div>
+                        <h3 class="property-title">Rumah Modern Minimalis</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Bintaro Sektor 9, Jakarta Selatan
+                        </p>
+                        <div class="property-area">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            120 m²
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                3 Kamar
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                2 Kamar Mandi
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-area="250" data-bedrooms="5" data-bathrooms="4">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=300&fit=crop" alt="Luxury Villa">
+                        <div class="property-badge featured">Unggulan</div>
+                        <div class="property-overlay">
+                            <button class="btn btn-white">Lihat Detail</button>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">Rp 2.5 Miliar</div>
+                        <h3 class="property-title">Villa Mewah dengan Kolam Renang</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Pondok Indah Residence, Jakarta Selatan
+                        </p>
+                        <div class="property-area">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            250 m²
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                5 Kamar
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                4 Kamar Mandi
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-area="85" data-bedrooms="2" data-bathrooms="2">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop" alt="Apartment">
+                        <div class="property-overlay">
+                            <button class="btn btn-white">Lihat Detail</button>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">Rp 850 Juta</div>
+                        <h3 class="property-title">Apartemen Premium City View</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Sudirman Central Business District, Jakarta Pusat
+                        </p>
+                        <div class="property-area">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            85 m²
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                2 Kamar
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                2 Kamar Mandi
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="btn btn-outline">
+                    Lihat Semua Properti
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Layanan Kami</h2>
+                <p class="section-subtitle">Solusi lengkap untuk kebutuhan properti Anda</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Jual Beli Properti</h3>
+                    <p class="service-description">
+                        Membantu Anda dalam proses jual beli properti dengan aman dan terpercaya
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="service-title">Sewa Properti</h3>
+                    <p class="service-description">
+                        Menyediakan berbagai pilihan properti sewa sesuai kebutuhan dan budget Anda
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Investasi Properti</h3>
+                    <p class="service-description">
+                        Konsultasi investasi properti untuk masa depan yang lebih cerah
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="service-title">Konsultasi Gratis</h3>
+                    <p class="service-description">
+                        Dapatkan konsultasi gratis dari tim ahli kami yang berpengalaman
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Tentang Uni Property</h2>
+                    <p class="about-description">
+                        PT. Universal Karya Sentosa telah berpengalaman lebih dari 15 tahun dalam industri properti. 
+                        Kami berkomitmen untuk memberikan pelayanan terbaik dan membantu Anda menemukan properti impian.
+                    </p>
+                    <p class="about-description">
+                        Dengan tim profesional yang berpengalaman dan jaringan yang luas, kami siap membantu Anda 
+                        dalam setiap langkah proses properti, mulai dari pencarian hingga proses legal.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Terpercaya</h4>
+                                <p>Lebih dari 15 tahun pengalaman</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Tim Profesional</h4>
+                                <p>Didukung tim ahli berpengalaman</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Aman & Legal</h4>
+                                <p>Proses legal yang aman dan terjamin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop" alt="About Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p class="section-subtitle">Siap membantu Anda menemukan properti impian</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Alamat</h4>
+                            <p>Jl. Sudirman No. 123<br>Jakarta Pusat, 10220</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telepon</h4>
+                            <p>+62 21 1234 5678<br>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>info@uniproperty.com<br>sales@uniproperty.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08:00 - 17:00<br>Sabtu: 08:00 - 15:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Nomor Telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Pilih Layanan</option>
+                            <option value="beli">Beli Properti</option>
+                            <option value="jual">Jual Properti</option>
+                            <option value="sewa">Sewa Properti</option>
+                            <option value="investasi">Konsultasi Investasi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" rows="5" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i>
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Uni Property Logo">
+                    </div>
+                    <p class="footer-description">
+                        PT. Universal Karya Sentosa - Mitra terpercaya untuk kebutuhan properti Anda. 
+                        Berpengalaman lebih dari 15 tahun dalam industri properti Indonesia.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Layanan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Jual Beli Properti</a></li>
+                        <li><a href="#">Sewa Properti</a></li>
+                        <li><a href="#">Investasi Properti</a></li>
+                        <li><a href="#">Konsultasi Gratis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Properti</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Rumah</a></li>
+                        <li><a href="#">Apartemen</a></li>
+                        <li><a href="#">Ruko</a></li>
+                        <li><a href="#">Tanah</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Kontak</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Sudirman No. 123, Jakarta Pusat</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> info@uniproperty.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 PT. Universal Karya Sentosa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Property Interest Modal -->
+    <div id="property-modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-property-title">Rumah Modern Minimalis</h3>
+                <button id="modal-close" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Property Details Section -->
+                <div class="modal-property-details">
+                    <div class="property-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="detail-label">Lokasi</span>
+                            <span class="detail-value" id="modal-property-location">Bintaro Sektor 9, Jakarta Selatan</span>
+                        </div>
+                    </div>
+                    
+                    <div class="property-detail-item">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <div>
+                            <span class="detail-label">Luas</span>
+                            <span class="detail-value" id="modal-property-area">120 m²</span>
+                        </div>
+                    </div>
+                    
+                    <div class="property-detail-item">
+                        <i class="fas fa-bed"></i>
+                        <div>
+                            <span class="detail-label">Kamar Tidur</span>
+                            <span class="detail-value" id="modal-property-bedrooms">3 Kamar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="property-detail-item">
+                        <i class="fas fa-bath"></i>
+                        <div>
+                            <span class="detail-label">Kamar Mandi</span>
+                            <span class="detail-value" id="modal-property-bathrooms">2 Kamar Mandi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="property-detail-item price-item">
+                        <i class="fas fa-tag"></i>
+                        <div>
+                            <span class="detail-label">Harga</span>
+                            <span class="detail-value price-value" id="modal-property-price">Rp 1.2 Miliar</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form id="property-interest-form" class="modal-form">
+                    <h4 class="form-section-title">Informasi Kontak</h4>
+                    <div class="modal-form-group">
+                        <label for="modal-name">Nama Lengkap</label>
+                        <input type="text" id="modal-name" class="modal-form-input" required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modal-phone">Nomor Telepon</label>
+                        <input type="tel" id="modal-phone" class="modal-form-input" required>
+                    </div>
+                    
+                    <!-- Map Section -->
+                    <div class="modal-map-container">
+                        <h4 class="map-title">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Lokasi Properti
+                        </h4>
+                        <div class="modal-map-location">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span class="modal-map-location-text" id="modal-property-location-pin">Pondok Indah Residence, Jakarta Selatan</span>
+                        </div>
+                        <div class="modal-map">
+                            <img id="modal-map-image" src="https://maps.googleapis.com/maps/api/staticmap?center=Jakarta&zoom=13&size=500x200&maptype=roadmap&style=feature:all|element:geometry|color:0xf5f5f5&style=feature:all|element:labels.text.fill|color:0x616161&markers=color:0xf39c12|size:mid|Jakarta&key=YOUR_API_KEY" alt="Lokasi Properti">
+                            <a id="modal-map-link" href="https://www.google.com/maps" target="_blank" class="modal-map-overlay">
+                              <button type="button" class="btn">
+                                Lihat peta
+                              </button>
+                            </a>
+                          </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Saya Tertarik
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

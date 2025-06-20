@@ -1,3 +1,506 @@
+/* Murakabi Property - Custom Styles */
+/* Mengikuti Panduan Gaya Visual Murakabi Property */
+
+/* Import Font Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CSS Variables - Palet Warna Murakabi Property */
+:root {
+    /* Warna Primer */
+    --color-putih: #FFFFFF;
+    --color-arang: #343a40;
+    
+    /* Warna Aksen */
+    --color-emas: #FFD700;
+    
+    /* Warna Sekunder/Netral */
+    --color-abu-terang: #F8F9FA;
+    --color-emas-tekstual: #D4AF37;
+    --color-abu-netral: #6c757d;
+    
+    /* Font Family */
+    --font-inter: 'Inter', sans-serif;
+}
+
+/* Reset dan Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: var(--color-putih);
+    color: var(--color-arang);
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Typography Hierarchy */
+h1 {
+    font-family: var(--font-inter);
+    font-weight: 800;
+    font-size: 3.75rem; /* 60px */
+    color: var(--color-arang);
+    line-height: 1.1;
+}
+
+h2 {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 2.25rem; /* 36px */
+    color: var(--color-arang);
+    line-height: 1.2;
+}
+
+h3 {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-arang);
+    line-height: 1.3;
+}
+
+p {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 1rem; /* 16px */
+    color: var(--color-arang);
+    line-height: 1.6;
+}
+
+.text-secondary {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 0.875rem; /* 14px */
+    color: var(--color-abu-netral);
+}
+
+/* Navigasi */
+nav {
+    background-color: var(--color-arang);
+    box-shadow: 0 2px 8px rgba(52, 58, 64, 0.1);
+}
+
+nav .brand-title {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 1.125rem; /* 18px */
+    color: var(--color-emas);
+}
+
+nav a {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-putih);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-emas);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--color-putih);
+    padding: 5rem 0;
+}
+
+.hero-title {
+    font-family: var(--font-inter);
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--color-arang);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--color-abu-netral);
+    margin-bottom: 2rem;
+}
+
+/* Buttons - Tombol */
+.btn-primary {
+    background-color: var(--color-emas);
+    color: var(--color-arang);
+    font-family: var(--font-inter);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #E6C200;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--color-arang);
+    color: var(--color-putih);
+    font-family: var(--font-inter);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #495057;
+}
+
+/* Property Cards - Kartu Properti */
+.property-card {
+    background-color: var(--color-putih);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(52, 58, 64, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(52, 58, 64, 0.15);
+}
+
+.property-card .category-label {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--color-emas-tekstual);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.property-card .property-title {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-arang);
+    margin-bottom: 1rem;
+}
+
+.property-card .property-price {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-arang);
+}
+
+.property-card .property-details {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--color-abu-netral);
+}
+
+.property-card .property-details strong {
+    font-weight: 600;
+    color: var(--color-arang);
+}
+
+/* Image Container */
+.img-container {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: var(--color-abu-terang);
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover .img-container img {
+    transform: scale(1.05);
+}
+
+/* Sections */
+.section-background-white {
+    background-color: var(--color-putih);
+}
+
+.section-background-light {
+    background-color: var(--color-abu-terang);
+}
+
+/* Forms */
+input, textarea {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-arang);
+    background-color: var(--color-putih);
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-emas);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+label {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--color-arang);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-arang);
+    color: var(--color-putih);
+    padding: 2rem 0;
+}
+
+footer .brand-title {
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-emas);
+}
+
+footer p {
+    color: var(--color-putih);
+}
+
+footer .text-gray-400 {
+    color: var(--color-abu-netral) !important;
+}
+
+/* Logo Styles */
+.footer-logo {
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    background-color: var(--color-arang);
+    border-top: 1px solid #495057;
+}
+
+.mobile-nav a {
+    color: #adb5bd;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: var(--color-emas);
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* 48px for mobile */
+    }
+    
+    h2 {
+        font-size: 1.875rem; /* 30px for mobile */
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem; /* 32px for smaller screens */
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-abu-terang);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-abu-netral);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-arang);
+}
+
+/* Modal Styles */
+.modal {
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--color-putih);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(52, 58, 64, 0.2);
+}
+
+/* Loading States */
+.loading-spinner {
+    border: 3px solid var(--color-abu-terang);
+    border-top: 3px solid var(--color-emas);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+.text-gold {
+    color: var(--color-emas) !important;
+}
+
+.text-gold-alt {
+    color: var(--color-emas-tekstual) !important;
+}
+
+.bg-gold {
+    background-color: var(--color-emas) !important;
+}
+
+.border-gold {
+    border-color: var(--color-emas) !important;
+}
+
+/* Sold Property Styles */
+.sold-card {
+    opacity: 0.7;
+}
+
+.sold-image {
+    filter: grayscale(50%);
+}
+
+.sold-badge {
+    background-color: rgba(255, 215, 0, 0.9);
+    color: var(--color-arang);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+}
+
+.sold-content {
+    position: relative;
+}
+
+.sold-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.1) 50%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Enhanced Button Styles */
+button {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(52, 58, 64, 0.12);
+}
+
+/* Error States */
+.error-state {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Success States */
+.success-state {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
 /* Custom styles to complement Tailwind CSS */
 
 /* Smooth scrolling */

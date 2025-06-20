@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murakabi Property - Solusi Properti Mewah & Terpercaya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon - Murakabi Property Logo -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
+    <link rel="shortcut icon" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.png" alt="Murakabi Property Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="brand-name">MURAKABI</span>
+                    <span class="brand-subtitle">PROPERTY</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#properties" class="nav-link">Properti</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Layanan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Temukan Properti <span class="highlight">Mewah</span> Impian Anda
+                </h1>
+                <p class="hero-subtitle">
+                    Murakabi Property menyediakan pilihan properti berkualitas premium dengan desain modern, 
+                    lokasi strategis, dan nilai investasi jangka panjang yang menguntungkan.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#properties" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        Jelajahi Properti
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Konsultasi Gratis
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Properti Premium</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Klien Terpuaskan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <h3>Filter Properti</h3>
+                <form class="search-form-grid" id="property-search-form">
+                    <!-- Location Filter -->
+                    <div class="filter-group">
+                        <label for="filter-location" class="filter-label"><i class="fas fa-map-marker-alt"></i> Lokasi</label>
+                        <select id="filter-location" class="filter-input">
+                            <option value="">Semua Lokasi</option>
+                            <!-- Opsi lokasi akan diisi oleh JS -->
+                        </select>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <label for="filter-price" class="filter-label"><i class="fas fa-dollar-sign"></i> Rentang Harga</label>
+                        <select id="filter-price" class="filter-input">
+                            <option value="">Semua Harga</option>
+                            <!-- Opsi harga akan diisi oleh JS -->
+                        </select>
+                    </div>
+
+                    <!-- Bedrooms Filter -->
+                    <div class="filter-group">
+                        <label for="filter-bedrooms" class="filter-label"><i class="fas fa-bed"></i> Kamar Tidur</label>
+                        <select id="filter-bedrooms" class="filter-input">
+                            <option value="">Semua</option>
+                            <!-- Opsi kamar tidur akan diisi oleh JS -->
+                        </select>
+                    </div>
+
+                    <!-- Bathrooms Filter -->
+                    <div class="filter-group">
+                        <label for="filter-bathrooms" class="filter-label"><i class="fas fa-bath"></i> Kamar Mandi</label>
+                        <select id="filter-bathrooms" class="filter-input">
+                            <option value="">Semua</option>
+                            <!-- Opsi kamar mandi akan diisi oleh JS -->
+                        </select>
+                    </div>
+                    
+                    <!-- Search Button -->
+                    <div class="filter-group-button">
+                         <button type="submit" class="btn btn-primary btn-search">
+                            <i class="fas fa-search"></i>
+                            Cari
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section id="properties" class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Listing Unggulan</h2>
+                <p class="section-subtitle">Pilihan properti berkualitas premium dengan desain modern dan lokasi strategis</p>
+            </div>
+            
+            <div class="properties-grid">
+                <!-- Property cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Tombol Lihat Lebih Banyak akan ditambahkan oleh JS -->
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Layanan Kami</h2>
+                <p class="section-subtitle">Solusi lengkap untuk kebutuhan properti mewah dan investasi terpercaya</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Jual Beli Properti Premium</h3>
+                    <p class="service-description">
+                        Membantu Anda dalam proses jual beli properti mewah dengan layanan profesional dan terpercaya
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="service-title">Sewa Properti Eksklusif</h3>
+                    <p class="service-description">
+                        Menyediakan pilihan properti sewaan berkualitas tinggi untuk kebutuhan hunian atau bisnis premium
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="service-title">Konsultasi Investasi</h3>
+                    <p class="service-description">
+                        Tim ahli kami memberikan saran profesional untuk investasi properti dengan return optimal
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="service-title">Manajemen Aset</h3>
+                    <p class="service-description">
+                        Mengelola aset properti Anda secara profesional untuk mengoptimalkan nilai investasi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                         <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Tentang Murakabi Property</h2>
+                         <p class="section-subtitle" style="text-align: left; margin: 0; max-width: 100%;">
+                             Solusi properti mewah dan terpercaya untuk masa depan Anda
+                         </p>
+                    </div>
+                    <p class="about-description">
+                        Murakabi Property hadir sebagai solusi properti mewah dan terpercaya, berkomitmen memberikan layanan terbaik dalam memenuhi kebutuhan investasi properti Anda. Dengan pengalaman dan dedikasi tinggi, kami menghadirkan pilihan properti berkualitas premium yang memadukan desain modern, lokasi strategis, dan nilai investasi jangka panjang.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Properti Premium Terverifikasi</h4>
+                                <p>Semua listing telah melewati seleksi ketat untuk memastikan kualitas terbaik</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <h4>Layanan Profesional</h4>
+                                <p>Tim ahli berpengalaman siap memberikan konsultasi investasi properti terbaik</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Transaksi Terpercaya</h4>
+                                <p>Kami menjamin keamanan, transparansi, dan kepuasan dalam setiap transaksi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&h=600&fit=crop" alt="About Murakabi Property">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p class="section-subtitle">Punya pertanyaan atau butuh konsultasi properti? Jangan ragu untuk menghubungi kami.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Alamat Kantor</h4>
+                            <p>Jl. Pramuka, Perumahan Akasia Permai Blok C No 12, Pasir Panjang, Arut Selatan, Pangkalan Bun, Kotawaringin Barat</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>info@murakabiproperty.co.id</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telepon</h4>
+                            <p>08115221998</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" name="message" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Kirim Pesan
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#" class="footer-logo">
+                        <img src="assets/logo.png" alt="Murakabi Property Logo">
+                    </a>
+                    <p class="footer-description">
+                        Murakabi Property adalah mitra terpercaya Anda dalam mencari, membeli, dan menjual properti mewah. Kami berkomitmen memberikan layanan terbaik dan properti berkualitas premium dengan nilai investasi jangka panjang.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#properties">Properti</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Layanan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Jual Properti Premium</a></li>
+                        <li><a href="#">Beli Properti Mewah</a></li>
+                        <li><a href="#">Sewa Properti Eksklusif</a></li>
+                        <li><a href="#">Konsultasi Investasi</a></li>
+                        <li><a href="#">Manajemen Aset</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Hubungi Kami</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Pramuka, Perumahan Akasia Permai Blok C No 12, Pasir Panjang, Arut Selatan, Pangkalan Bun, Kotawaringin Barat</p>
+                        <p><i class="fas fa-phone"></i> 08115221998</p>
+                        <p><i class="fas fa-envelope"></i> info@murakabiproperty.co.id</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Murakabi Property. Solusi Properti Mewah & Terpercaya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Property Detail Modal -->
+    <div class="modal-overlay" id="property-modal-overlay">
+        <div class="modal" id="property-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-property-title">Detail Properti</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-property-details">
+                    <!-- Location -->
+                     <div class="property-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="detail-label">Lokasi</span>
+                            <span class="detail-value" id="modal-property-location"></span>
+                        </div>
+                    </div>
+                    <!-- Price -->
+                    <div class="property-detail-item price-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div>
+                            <span class="detail-label">Harga</span>
+                            <span class="detail-value price-value" id="modal-property-price"></span>
+                        </div>
+                    </div>
+                    <!-- Area -->
+                    <div class="property-detail-item">
+                        <i class="fas fa-ruler-combined"></i>
+                        <div>
+                            <span class="detail-label">Luas Bangunan</span>
+                            <span class="detail-value" id="modal-property-area"></span>
+                        </div>
+                    </div>
+                    <!-- Bedrooms -->
+                    <div class="property-detail-item">
+                        <i class="fas fa-bed"></i>
+                        <div>
+                            <span class="detail-label">Kamar Tidur</span>
+                            <span class="detail-value" id="modal-property-bedrooms"></span>
+                        </div>
+                    </div>
+                    <!-- Bathrooms -->
+                    <div class="property-detail-item">
+                        <i class="fas fa-bath"></i>
+                        <div>
+                            <span class="detail-label">Kamar Mandi</span>
+                            <span class="detail-value" id="modal-property-bathrooms"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                 <div class="modal-map-location">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="modal-map-location-text">Lokasi di Peta</span>
+                 </div>
+                <div class="modal-map">
+                    <img id="modal-map-image" src="" alt="Peta Lokasi Properti">
+                    <a id="modal-map-link" href="#" target="_blank" class="modal-map-overlay">
+                        <span class="btn btn-white">
+                            <i class="fas fa-external-link-alt"></i>
+                            Buka di Google Maps
+                        </span>
+                    </a>
+                </div>
+                
+                <h4 class="form-section-title">Formulir Peminatan</h4>
+                <form id="property-interest-form" class="modal-form">
+                    <input type="hidden" id="modal-property-name-hidden" name="property-name">
+                    <div class="modal-form-group">
+                        <label for="modal-name">Nama Lengkap</label>
+                        <input type="text" id="modal-name" name="name" class="modal-form-input" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modal-phone">Nomor Telepon</label>
+                        <input type="tel" id="modal-phone" name="phone" class="modal-form-input" placeholder="Contoh: 081234567890" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Kirim Minat
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load configuration (make sure config.js exists and is not committed to Git) -->
+    <script src="js/config.js"></script>
+    <script src="js/fallback-data.js"></script>
+    <script src="js/airtable-config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

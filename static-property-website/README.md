@@ -1,186 +1,152 @@
-# Property Management System
+# Website Murakabi Property
 
-A desktop application for managing real estate properties with user authentication and comprehensive property management features.
+Website properti modern dan mewah untuk Murakabi Property, dibangun mengikuti panduan gaya visual yang profesional dan elegan.
 
-## Features
+## 🎨 Desain & Branding
 
-### 🔐 User Authentication
-- Secure login system with password hashing
-- Admin and user roles
-- Password change functionality
-- User creation (admin only)
+Website ini mengikuti **Panduan Gaya Visual Murakabi Property** dengan filosofi desain:
+- **Modern** - Menggunakan teknologi web terkini
+- **Profesional** - Layout yang bersih dan terorganisir
+- **Mewah** - Pemilihan warna dan tipografi premium
+- **Terpercaya** - Interface yang konsisten dan mudah digunakan
 
-### 🏠 Property Management
-- Add new properties with detailed information
-- Edit existing property details
-- Update property status (Available, Pending, Sold, Rented, Unavailable)
-- Delete properties
-- Search and filter properties
-- Comprehensive property details including:
-  - Address, City, State, ZIP Code
-  - Property type (House, Apartment, Condo, etc.)
-  - Bedrooms, Bathrooms, Square footage
-  - Price and description
+### Palet Warna
+- **Warna Primer**: Putih (#FFFFFF), Abu-abu Arang (#343a40)
+- **Warna Aksen**: Emas (#FFD700)
+- **Warna Sekunder**: Abu-abu Sangat Terang (#F8F9FA), Emas Tekstual (#D4AF37), Abu-abu Netral (#6c757d)
 
-### 💻 User Interface
-- Modern, intuitive GUI built with Tkinter
-- Tabbed interface for easy navigation
-- Responsive design with scrollable forms
-- Real-time search functionality
+### Tipografi
+Font utama: **Inter** (400, 500, 600, 700, 800)
+- Hierarki teks yang jelas dari H1 hingga body text
+- Keterbacaan optimal di semua perangkat
 
-### 🗄️ Database
-- SQLite database for data storage
-- Automatic database initialization
-- Data persistence and backup
+## 🚀 Fitur Utama
 
-## Installation
+### 1. Hero Section
+- Sambutan yang menarik dengan branding Murakabi Property
+- Call-to-Action yang menonjol
 
-### Prerequisites
-- Windows 10 or higher
-- Python 3.7 or higher (download from [python.org](https://www.python.org/))
-- Make sure to check "Add Python to PATH" during Python installation
+### 2. Listing Properti
+- Kartu properti dengan desain modern
+- Kategori properti (APARTEMEN, VILLA, RUMAH)
+- Informasi lengkap: lokasi, luas, kamar, harga
+- Efek hover yang elegant
 
-### Automatic Installation
-1. Download or clone this repository
-2. Right-click on `install.bat` and select "Run as administrator"
-3. Follow the installation prompts
-4. The installer will:
-   - Check Python installation
-   - Create a virtual environment
-   - Install dependencies
-   - Create a desktop shortcut
+### 3. Modal Kontak
+- Form kontak untuk inquiries
+- Integrasi Google Maps untuk lokasi
+- Validasi form yang user-friendly
 
-### Manual Installation
-If the automatic installer doesn't work:
+### 4. Responsif
+- Mobile-first design
+- Navigasi bawah untuk mobile
+- Optimized untuk semua ukuran layar
 
-1. Open Command Prompt or PowerShell
-2. Navigate to the project directory
-3. Create virtual environment:
-   ```
-   python -m venv property_manager_env
-   ```
-4. Activate virtual environment:
-   ```
-   property_manager_env\Scripts\activate
-   ```
-5. Run the application:
-   ```
-   python main.py
-   ```
+### 5. Integrasi Airtable
+- Data properti dinamis dari Airtable
+- Real-time updates
+- Status "Terjual" otomatis
 
-## Usage
+## 📁 Struktur File
 
-### First Time Setup
-1. Run the application using the desktop shortcut or `run_property_manager.bat`
-2. Login with default credentials:
-   - **Username:** admin
-   - **Password:** admin123
-3. **IMPORTANT:** Change the default password immediately after first login!
-
-### Adding Properties
-1. Click on the "Add Property" tab
-2. Fill in the property details:
-   - Required fields: Address, City, State, ZIP Code, Property Type
-   - Optional fields: Bedrooms, Bathrooms, Square footage, Price, Description
-3. Click "Add Property" to save
-
-### Managing Properties
-1. Go to the "Properties" tab to view all properties
-2. Use the search box to find specific properties
-3. Select a property and use the buttons to:
-   - **Edit Property:** Modify property details
-   - **Update Status:** Change property status (available, pending, sold, etc.)
-   - **Delete Property:** Remove property from the database
-
-### User Management (Admin Only)
-1. Admin users can create new users via the "Users" menu
-2. Set username, password, and role (user or admin)
-3. Users can change their own passwords via the "Users" menu
-
-### Property Status Options
-- **Available:** Property is on the market
-- **Pending:** Property has an offer or is under contract
-- **Sold:** Property has been sold
-- **Rented:** Property is currently rented
-- **Unavailable:** Property is temporarily off the market
-
-## File Structure
 ```
-property-management-app-standalone/
-├── main.py                    # Main application file
-├── install.bat               # Windows installer script
-├── uninstall.bat            # Uninstaller script
-├── requirements.txt          # Python dependencies
-├── README.md                # This file
-├── USER_MANUAL.md           # Detailed user guide
-└── property_management.db   # SQLite database (created at runtime)
+static-property-website/
+├── assets/
+│   └── logo.png              # Logo Murakabi Property
+├── css/
+│   └── styles.css            # Stylesheet utama dengan variabel CSS
+├── js/
+│   ├── airtable-config.js    # Konfigurasi Airtable
+│   └── main.js               # JavaScript utama
+├── index.html                # Halaman utama
+└── README.md                 # Dokumentasi ini
 ```
 
-## Database Schema
+## ⚙️ Setup & Konfigurasi
 
-### Users Table
-- `id`: Primary key
-- `username`: Unique username
-- `password_hash`: Hashed password
-- `role`: User role (admin/user)
-- `created_at`: Account creation timestamp
+### 1. Airtable Setup
+Edit file `js/airtable-config.js`:
+```javascript
+const AIRTABLE_CONFIG = {
+    API_KEY: 'your_airtable_api_key',
+    BASE_ID: 'your_base_id',
+    TABLE_NAME: 'Properties',
+    // ... kolom lainnya
+};
+```
 
-### Properties Table
-- `id`: Primary key
-- `address`: Property address
-- `city`: City name
-- `state`: State/Province
-- `zip_code`: ZIP/Postal code
-- `property_type`: Type of property
-- `bedrooms`: Number of bedrooms
-- `bathrooms`: Number of bathrooms
-- `sqft`: Square footage
-- `price`: Property price
-- `status`: Current status
-- `description`: Property description
-- `added_by`: Username who added the property
-- `created_at`: Creation timestamp
-- `updated_at`: Last update timestamp
+### 2. Telegram Bot (Opsional)
+Edit file `js/main.js` untuk notifikasi:
+```javascript
+const TELEGRAM_BOT_TOKEN = 'your_bot_token';
+const TELEGRAM_CHAT_ID = 'your_chat_id';
+```
 
-## Security Features
-- Passwords are hashed using SHA-256
-- User sessions with role-based access control
-- Database uses parameterized queries to prevent SQL injection
+### 3. Deployment
+Website ini adalah static website yang bisa di-deploy ke:
+- GitHub Pages
+- Netlify
+- Vercel
+- Web hosting tradisional
 
-## Troubleshooting
+## 🎯 Komponen UI
 
-### Common Issues
-1. **"Python is not installed"**
-   - Install Python from python.org
-   - Make sure to check "Add Python to PATH"
+### Buttons
+- **Primary Button**: Background emas (#FFD700), teks abu-abu arang
+- **Secondary Button**: Background abu-abu arang, teks putih
 
-2. **Application won't start**
-   - Try running `run_property_manager.bat` as administrator
-   - Check if the virtual environment was created properly
+### Cards
+- Border radius: 12px
+- Shadow yang halus dengan efek hover
+- Transisi smooth untuk semua interaksi
 
-3. **Database errors**
-   - Delete `property_management.db` to reset the database
-   - The application will recreate it with default settings
+### Forms
+- Border focus dengan warna emas
+- Label yang jelas dengan font Inter Medium
+- Validasi visual
 
-4. **Permission errors**
-   - Run the installer as administrator
-   - Make sure you have write permissions in the installation directory
+### Loading States
+- Spinner dengan warna branding
+- Error states dengan pesan yang jelas
 
-### Getting Help
-If you encounter issues:
-1. Check the error messages in the command prompt
-2. Ensure Python is properly installed and in PATH
-3. Try running the application manually: `python main.py`
+## 📱 Responsive Breakpoints
 
-## System Requirements
-- **OS:** Windows 10 or higher
-- **Python:** 3.7 or higher
-- **RAM:** 512MB minimum
-- **Storage:** 50MB for application and database
-- **Display:** 1024x768 minimum resolution
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px  
+- **Desktop**: > 1024px
 
-## License
-This software is provided as-is for educational and commercial use.
+## 🔧 Teknologi
 
-## Support
-For technical support or feature requests, please refer to the documentation or contact your system administrator. 
+- **HTML5** - Struktur semantic
+- **CSS3** - Custom properties, Flexbox, Grid
+- **Vanilla JavaScript** - Tanpa framework untuk performa optimal
+- **Tailwind CSS** - Utility-first CSS framework
+- **Inter Font** - Typography modern via Google Fonts
+
+## 📊 Performance
+
+- Optimized images
+- Minimal JavaScript
+- CSS variables untuk konsistensi
+- Lazy loading untuk gambar properti
+
+## 🎨 Customization
+
+Untuk mengubah branding, edit variabel CSS di `css/styles.css`:
+
+```css
+:root {
+    --color-putih: #FFFFFF;
+    --color-arang: #343a40;
+    --color-emas: #FFD700;
+    /* ... variabel lainnya */
+}
+```
+
+## 📞 Support
+
+Untuk dukungan teknis atau pertanyaan mengenai website ini, silakan hubungi tim pengembang.
+
+---
+
+© 2024 Murakabi Property. Solusi Properti Mewah & Terpercaya. 

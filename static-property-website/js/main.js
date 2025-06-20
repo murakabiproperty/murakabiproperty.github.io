@@ -1,4 +1,4 @@
-// Konfigurasi Bot Telegram
+// Konfigurasi Bot Telegram - Murakabi Property
 const TELEGRAM_BOT_TOKEN = '7633063242:AAHKGy4bb84_nS47v3bN0OQzzT_o0dqCmNo';
 const TELEGRAM_CHAT_ID = '2142354455';
 
