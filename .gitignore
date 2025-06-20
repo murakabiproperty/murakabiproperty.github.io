@@ -11,6 +11,7 @@ config/secrets.js
 config/keys.js
 secrets/
 private/
+ENVIRONMENT_VARIABLES.txt
 
 # Node modules (if using build tools)
 node_modules/

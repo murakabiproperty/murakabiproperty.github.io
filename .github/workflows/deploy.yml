@@ -19,26 +19,27 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Create config.js from secrets
+    - name: Create config.js from GitHub Secrets
       run: |
         cat > js/config.js << EOF
-        // Auto-generated config from GitHub Secrets
+        // Auto-generated config from GitHub Secrets - Murakabi Property
+        // Generated at: $(date)
         const CONFIG = {
             AIRTABLE: {
                 API_KEY: '${{ secrets.AIRTABLE_API_KEY }}',
                 BASE_ID: '${{ secrets.AIRTABLE_BASE_ID }}',
-                TABLE_NAME: 'Properties',
+                TABLE_NAME: '${{ secrets.AIRTABLE_TABLE_NAME || 'Properties' }}',
                 COLUMNS: {
-                    NAME: 'Name',
-                    LOCATION: 'Location',
-                    AREA: 'Area',
-                    BEDROOMS: 'Bedrooms',
-                    BATHROOMS: 'Bathrooms',
-                    PRICE: 'Price',
-                    IMAGE: 'Image',
-                    DESCRIPTION: 'Description',
-                    MAP_LINK: 'MapLink',
-                    SOLD: 'Sold'
+                    NAME: '${{ secrets.AIRTABLE_COLUMN_NAME || 'Name' }}',
+                    LOCATION: '${{ secrets.AIRTABLE_COLUMN_LOCATION || 'Location' }}',
+                    AREA: '${{ secrets.AIRTABLE_COLUMN_AREA || 'Area' }}',
+                    BEDROOMS: '${{ secrets.AIRTABLE_COLUMN_BEDROOMS || 'Bedrooms' }}',
+                    BATHROOMS: '${{ secrets.AIRTABLE_COLUMN_BATHROOMS || 'Bathrooms' }}',
+                    PRICE: '${{ secrets.AIRTABLE_COLUMN_PRICE || 'Price' }}',
+                    IMAGE: '${{ secrets.AIRTABLE_COLUMN_IMAGE || 'Image' }}',
+                    DESCRIPTION: '${{ secrets.AIRTABLE_COLUMN_DESCRIPTION || 'Description' }}',
+                    MAP_LINK: '${{ secrets.AIRTABLE_COLUMN_MAP_LINK || 'MapLink' }}',
+                    SOLD: '${{ secrets.AIRTABLE_COLUMN_SOLD || 'Sold' }}'
                 }
             },
             TELEGRAM: {
@@ -47,18 +48,22 @@ jobs:
             },
             CONTACT: {
                 EMAILJS: {
-                    SERVICE_ID: '${{ secrets.EMAILJS_SERVICE_ID }}',
-                    TEMPLATE_ID: '${{ secrets.EMAILJS_TEMPLATE_ID }}',
-                    PUBLIC_KEY: '${{ secrets.EMAILJS_PUBLIC_KEY }}'
+                    SERVICE_ID: '${{ secrets.EMAILJS_SERVICE_ID || '' }}',
+                    TEMPLATE_ID: '${{ secrets.EMAILJS_TEMPLATE_ID || '' }}',
+                    PUBLIC_KEY: '${{ secrets.EMAILJS_PUBLIC_KEY || '' }}'
+                },
+                FORMSPREE: {
+                    ENDPOINT: '${{ secrets.FORMSPREE_ENDPOINT || '' }}'
                 }
             },
             GOOGLE_MAPS: {
-                API_KEY: '${{ secrets.GOOGLE_MAPS_API_KEY }}'
+                API_KEY: '${{ secrets.GOOGLE_MAPS_API_KEY || '' }}'
             },
-            ENVIRONMENT: 'production',
-            DEBUG: false
+            ENVIRONMENT: '${{ secrets.ENVIRONMENT || 'production' }}',
+            DEBUG: ${{ secrets.DEBUG || 'false' }}
         };
         
+        // Make CONFIG available globally
         if (typeof module !== 'undefined' && module.exports) {
             module.exports = CONFIG;
         } else {
