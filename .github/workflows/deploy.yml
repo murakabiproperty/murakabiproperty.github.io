@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Create config.js from GitHub Secrets
+      run: |
+        cat > js/config.js << EOF
+        // Auto-generated config from GitHub Secrets - Murakabi Property
+        // Generated at: $(date)
+        const CONFIG = {
+            AIRTABLE: {
+                API_KEY: '${{ secrets.AIRTABLE_API_KEY }}',
+                BASE_ID: '${{ secrets.AIRTABLE_BASE_ID }}',
+                TABLE_NAME: '${{ secrets.AIRTABLE_TABLE_NAME || 'Properties' }}',
+                COLUMNS: {
+                    NAME: '${{ secrets.AIRTABLE_COLUMN_NAME || 'Name' }}',
+                    LOCATION: '${{ secrets.AIRTABLE_COLUMN_LOCATION || 'Location' }}',
+                    AREA: '${{ secrets.AIRTABLE_COLUMN_AREA || 'Area' }}',
+                    BEDROOMS: '${{ secrets.AIRTABLE_COLUMN_BEDROOMS || 'Bedrooms' }}',
+                    BATHROOMS: '${{ secrets.AIRTABLE_COLUMN_BATHROOMS || 'Bathrooms' }}',
+                    PRICE: '${{ secrets.AIRTABLE_COLUMN_PRICE || 'Price' }}',
+                    IMAGE: '${{ secrets.AIRTABLE_COLUMN_IMAGE || 'Image' }}',
+                    DESCRIPTION: '${{ secrets.AIRTABLE_COLUMN_DESCRIPTION || 'Description' }}',
+                    MAP_LINK: '${{ secrets.AIRTABLE_COLUMN_MAP_LINK || 'MapLink' }}',
+                    SOLD: '${{ secrets.AIRTABLE_COLUMN_SOLD || 'Sold' }}'
+                }
+            },
+            TELEGRAM: {
+                BOT_TOKEN: '${{ secrets.TELEGRAM_BOT_TOKEN }}',
+                CHAT_ID: '${{ secrets.TELEGRAM_CHAT_ID }}'
+            },
+            CONTACT: {
+                EMAILJS: {
+                    SERVICE_ID: '${{ secrets.EMAILJS_SERVICE_ID || '' }}',
+                    TEMPLATE_ID: '${{ secrets.EMAILJS_TEMPLATE_ID || '' }}',
+                    PUBLIC_KEY: '${{ secrets.EMAILJS_PUBLIC_KEY || '' }}'
+                },
+                FORMSPREE: {
+                    ENDPOINT: '${{ secrets.FORMSPREE_ENDPOINT || '' }}'
+                }
+            },
+            GOOGLE_MAPS: {
+                API_KEY: '${{ secrets.GOOGLE_MAPS_API_KEY || '' }}'
+            },
+            ENVIRONMENT: '${{ secrets.ENVIRONMENT || 'production' }}',
+            DEBUG: ${{ secrets.DEBUG || 'false' }}
+        };
+        
+        // Make CONFIG available globally
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = CONFIG;
+        } else {
+            window.CONFIG = CONFIG;
+        }
+        EOF
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: '.github,node_modules,*.md'
+        force_orphan: true 
