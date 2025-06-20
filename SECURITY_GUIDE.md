@@ -19,7 +19,7 @@ const BOT_TOKEN = "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"; // Sangat berbaha
 ```bash
 # .env file (JANGAN commit ke Git)
 AIRTABLE_API_KEY=pat_your_real_api_key_here
-TELEGRAM_BOT_TOKEN=your_real_bot_token_here
+TELEGRAM_BOT_TOKEN=your_real_bot_token_heres
 TELEGRAM_CHAT_ID=your_real_chat_id_here
 ```
 
