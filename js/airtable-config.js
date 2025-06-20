@@ -1,50 +1,50 @@
-// /f%3A/my_property_website/property_website_bagus/js/airtable-config.js
+// Murakabi Property - Airtable Configuration (SECURE VERSION)
+// =================================================================================
+// ⚠️ KEAMANAN: File ini sekarang menggunakan konfigurasi dari config.js
+// JANGAN pernah commit API keys atau tokens ke Git!
+// =================================================================================
 
-// =================================================================================
-// KONFIGURASI PENTING
-// =================================================================================
-// File ini berisi semua kunci API, ID, dan nama kolom untuk aplikasi.
-// Jangan membagikan file ini atau mempublikasikannya secara publik.
-// =================================================================================
+// Check if secure CONFIG is loaded
+if (typeof CONFIG === 'undefined') {
+    console.error('🚨 KEAMANAN: File config.js tidak ditemukan!');
+    console.error('📖 Baca SECURITY_GUIDE.md untuk setup yang aman.');
+    console.error('🔧 Copy js/config.example.js ke js/config.js dan isi dengan credentials real Anda.');
+}
 
 const APP_CONFIG = {
-    // --- Konfigurasi Airtable ---
-    // Kunci API Personal Access Token dari akun Airtable Anda.
-    AIRTABLE_API_KEY: 'pat0cJUQcyOFxDllX.c2421f2ebdfeba1fdf48d662fa60ef05652a4b2deb095f5c5781362aa795c958', 
-    
-    // ID dari Airtable Base yang Anda gunakan.
-    AIRTABLE_BASE_ID: 'appx1T49Qqh0g3AcF', 
-    
-    // Nama tabel properti di dalam Base Anda.
-    AIRTABLE_TABLE_NAME: 'Properties',
+    // --- Konfigurasi Airtable (Secure) ---
+    AIRTABLE_API_KEY: (typeof CONFIG !== 'undefined' && CONFIG.AIRTABLE) ? CONFIG.AIRTABLE.API_KEY : 'PLACEHOLDER_API_KEY',
+    AIRTABLE_BASE_ID: (typeof CONFIG !== 'undefined' && CONFIG.AIRTABLE) ? CONFIG.AIRTABLE.BASE_ID : 'PLACEHOLDER_BASE_ID',
+    AIRTABLE_TABLE_NAME: (typeof CONFIG !== 'undefined' && CONFIG.AIRTABLE) ? CONFIG.AIRTABLE.TABLE_NAME : 'Properties',
 
-    // --- Konfigurasi Telegram ---
-    // Token dari bot Telegram yang Anda buat melalui @BotFather.
-    TELEGRAM_BOT_TOKEN: '7633063242:AAHKGy4bb84_nS47v3bN0OQzzT_o0dqCmNo',
+    // --- Konfigurasi Telegram (Secure) ---
+    TELEGRAM_BOT_TOKEN: (typeof CONFIG !== 'undefined' && CONFIG.TELEGRAM) ? CONFIG.TELEGRAM.BOT_TOKEN : 'PLACEHOLDER_BOT_TOKEN',
+    TELEGRAM_CHAT_ID: (typeof CONFIG !== 'undefined' && CONFIG.TELEGRAM) ? CONFIG.TELEGRAM.CHAT_ID : 'PLACEHOLDER_CHAT_ID',
 
-    // ID Chat unik untuk tujuan pengiriman notifikasi (bisa grup atau personal).
-    TELEGRAM_CHAT_ID: '2142354455',
-
-    // --- (Opsional) Google Static Map API Key ---
-    // Isi jika Anda memiliki API key Google Maps Static API untuk preview peta yang lebih stabil.
-    // Jika dibiarkan kosong, sistem akan mencoba memuat tanpa key (ber-watermark) dan fallback ke placeholder jika gagal.
-    GOOGLE_STATIC_MAP_KEY: '',
+    // --- Google Maps API Key (Secure) ---
+    GOOGLE_STATIC_MAP_KEY: (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_MAPS) ? CONFIG.GOOGLE_MAPS.API_KEY : '',
 
     // --- Pemetaan Kolom Airtable ---
-    // Sesuaikan nama string di sebelah kanan jika nama kolom di Airtable Anda berbeda.
-    COLUMNS: {
-        NAME: 'Name',             // Tipe: Single line text
-        LOCATION: 'Location',       // Tipe: Single line text
-        AREA: 'Area',             // Tipe: Number (integer)
-        BEDROOMS: 'Bedrooms',         // Tipe: Number (integer)
-        BATHROOMS: 'Bathrooms',       // Tipe: Number (integer)
-        PRICE: 'Price',           // Tipe: Number (integer atau currency)
-        IMAGE: 'Image',           // Tipe: Attachment (hanya gambar pertama yang akan digunakan)
-        DESCRIPTION: 'Description', // Tipe: Rich text atau long text (opsional)
-        MAP_LINK: 'MapLink',        // Tipe: URL (opsional)
-        SOLD: 'Sold'              // Tipe: Checkbox (true/false)
+    COLUMNS: (typeof CONFIG !== 'undefined' && CONFIG.AIRTABLE && CONFIG.AIRTABLE.COLUMNS) ? CONFIG.AIRTABLE.COLUMNS : {
+        NAME: 'Name',
+        LOCATION: 'Location',
+        AREA: 'Area',
+        BEDROOMS: 'Bedrooms',
+        BATHROOMS: 'Bathrooms',
+        PRICE: 'Price',
+        IMAGE: 'Image',
+        DESCRIPTION: 'Description',
+        MAP_LINK: 'MapLink',
+        SOLD: 'Sold'
     }
 };
 
-// Membuat konfigurasi tersedia secara global di seluruh aplikasi.
+// Security warnings
+if (APP_CONFIG.AIRTABLE_API_KEY === 'PLACEHOLDER_API_KEY') {
+    console.warn('⚠️ KEAMANAN: Menggunakan placeholder credentials!');
+    console.warn('🔧 Setup file config.js dengan credentials real Anda.');
+    console.warn('📖 Baca SECURITY_GUIDE.md untuk panduan lengkap.');
+}
+
+// Membuat konfigurasi tersedia secara global
 window.APP_CONFIG = APP_CONFIG; 

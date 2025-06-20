@@ -1,0 +1,46 @@
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.production
+.env.staging
+
+# API Keys and Secrets
+js/config.js
+config/secrets.js
+config/keys.js
+secrets/
+private/
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/ 
