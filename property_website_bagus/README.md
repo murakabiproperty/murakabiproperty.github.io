@@ -4,7 +4,7 @@ Website properti mewah dan profesional untuk Murakabi Property, telah diperbarui
 
 ## 🎨 **Identitas Visual Murakabi Property**
 
-Website ini telah mengikuti **Panduan Gaya Visual Murakabi Property** dengan filosofi desain:
+Website ini telah mensgikuti **Panduan Gaya Visual Murakabi Property** dengan filosofi desain:
 - **Modern** - Teknologi web terkini dengan desain kontemporer
 - **Profesional** - Layout yang bersih dan terorganisir dengan baik
 - **Mewah** - Pemilihan warna emas dan tipografi premium
