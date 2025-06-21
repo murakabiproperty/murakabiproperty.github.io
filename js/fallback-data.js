@@ -4,45 +4,67 @@
 const FALLBACK_PROPERTIES = [
     {
         id: 'demo-1',
-        name: 'Villa Modern Murakabi',
-        location: 'Kemang, Jakarta Selatan',
-        area: 350,
-        bedrooms: 4,
-        bathrooms: 3,
-        price: 8500000000,
-        image: 'assets/hero-bg.jpg',
-        description: 'Villa mewah dengan desain modern dan fasilitas lengkap',
-        mapLink: 'https://maps.google.com/?q=Kemang+Jakarta+Selatan',
-        sold: false,
-        featured: true
+        fields: {
+            'Name': 'Villa Modern Murakabi',
+            'Location': 'Kemang, Jakarta Selatan',
+            'Area': 350,
+            'AreaUnit': 'm²',
+            'Bedrooms': 4,
+            'Bathrooms': 3,
+            'Price': 8500000000,
+            'Image': [{'url': 'assets/hero-bg.jpg'}],
+            'Description': 'Villa mewah dengan desain modern dan fasilitas lengkap',
+            'MapLink': 'https://maps.google.com/?q=Kemang+Jakarta+Selatan',
+            'Sold': false
+        }
     },
     {
         id: 'demo-2',
-        name: 'Apartemen Premium Murakabi',
-        location: 'Sudirman, Jakarta Pusat',
-        area: 180,
-        bedrooms: 2,
-        bathrooms: 2,
-        price: 4200000000,
-        image: 'assets/hero-bg.jpg',
-        description: 'Apartemen premium dengan view kota yang menakjubkan',
-        mapLink: 'https://maps.google.com/?q=Sudirman+Jakarta+Pusat',
-        sold: false,
-        featured: false
+        fields: {
+            'Name': 'Apartemen Premium Murakabi',
+            'Location': 'Sudirman, Jakarta Pusat',
+            'Area': 180,
+            'AreaUnit': 'm²',
+            'Bedrooms': 2,
+            'Bathrooms': 2,
+            'Price': 4200000000,
+            'Image': [{'url': 'assets/hero-bg.jpg'}],
+            'Description': 'Apartemen premium dengan view kota yang menakjubkan',
+            'MapLink': 'https://maps.google.com/?q=Sudirman+Jakarta+Pusat',
+            'Sold': false
+        }
     },
     {
         id: 'demo-3',
-        name: 'Rumah Eksklusif Murakabi',
-        location: 'Pondok Indah, Jakarta Selatan',
-        area: 280,
-        bedrooms: 3,
-        bathrooms: 3,
-        price: 6800000000,
-        image: 'assets/hero-bg.jpg',
-        description: 'Rumah eksklusif di kawasan elite dengan taman yang asri',
-        mapLink: 'https://maps.google.com/?q=Pondok+Indah+Jakarta+Selatan',
-        sold: true,
-        featured: false
+        fields: {
+            'Name': 'Rumah Eksklusif Murakabi',
+            'Location': 'Pondok Indah, Jakarta Selatan',
+            'Area': 280,
+            'AreaUnit': 'm²',
+            'Bedrooms': 3,
+            'Bathrooms': 3,
+            'Price': 6800000000,
+            'Image': [{'url': 'assets/hero-bg.jpg'}],
+            'Description': 'Rumah eksklusif di kawasan elite dengan taman yang asri',
+            'MapLink': 'https://maps.google.com/?q=Pondok+Indah+Jakarta+Selatan',
+            'Sold': true
+        }
+    },
+    {
+        id: 'demo-4',
+        fields: {
+            'Name': 'Estate Murakabi Premium',
+            'Location': 'Sentul, Bogor',
+            'Area': 2.5,
+            'AreaUnit': 'ha',
+            'Bedrooms': 6,
+            'Bathrooms': 5,
+            'Price': 15000000000,
+            'Image': [{'url': 'assets/hero-bg.jpg'}],
+            'Description': 'Estate premium dengan lahan luas, cocok untuk investasi besar',
+            'MapLink': 'https://maps.google.com/?q=Sentul+Bogor',
+            'Sold': false
+        }
     }
 ];
 
@@ -63,11 +85,7 @@ async function getProperties() {
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 500));
         
-        return {
-            success: true,
-            data: FALLBACK_PROPERTIES,
-            message: 'Demo data loaded successfully'
-        };
+        return FALLBACK_PROPERTIES;
     } else {
         // Use real Airtable API
         return await fetchFromAirtable();

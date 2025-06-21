@@ -69,6 +69,32 @@ Font utama: **Inter** dengan hierarki yang jelas:
 - Navigation yang optimal di semua perangkat
 - Breakpoint yang konsisten
 
+### 🏠 Tampilan Properti Dinamis
+- **Listing properti** yang diambil langsung dari database Airtable
+- **Gambar properti** dengan lazy loading dan fallback
+- **Filter properti** berdasarkan lokasi, harga, kamar tidur, dan kamar mandi
+- **Modal detail** dengan informasi properti lengkap
+- **Peta lokasi** terintegrasi dengan Google Maps
+
+### 📏 Satuan Area Otomatis (BARU!)
+- **Tampilan satuan area** otomatis sesuai data dari Airtable
+- **Dukungan m² dan hektare (ha)** berdasarkan input di aplikasi
+- **Auto-deteksi unit** untuk data lama tanpa informasi satuan
+- **Edit unit area** untuk properti yang sudah ada di aplikasi
+- **Tidak ada kontrol manual** - professional dan clean
+- **Sinkronisasi penuh** dengan aplikasi property management
+
+### 📱 Responsif dan Modern
+- **Design responsif** untuk semua device
+- **Animasi smooth** dan transisi modern
+- **Loading states** yang informatif
+- **Error handling** yang baik
+
+### 🔗 Integrasi Airtable
+- **Real-time data** dari Airtable
+- **Fallback data** untuk mode demo
+- **Automatic sync** dengan aplikasi management
+
 ## 📁 **Struktur File**
 
 ```

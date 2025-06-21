@@ -50,6 +50,28 @@ let allProperties = []; // Store all properties globally
 let currentPropertyIndex = 0;
 let propertiesPerPage = 6;
 
+// Area display function - reads unit from data
+function formatAreaDisplay(area, unit) {
+    if (!area || area === 'N/A') return 'N/A';
+    
+    const numArea = parseFloat(area);
+    if (isNaN(numArea)) return 'N/A';
+    
+    // Auto-detect best unit if not specified
+    if (!unit || unit === '') {
+        // If area >= 5000 m², assume it might be better displayed in hectares
+        if (numArea >= 5000) {
+            unit = 'ha';
+            const convertedArea = numArea / 10000;
+            return `${convertedArea.toFixed(4)} ${unit}`;
+        } else {
+            unit = 'm²';
+        }
+    }
+    
+    return `${numArea} ${unit}`;
+}
+
 function getPropertiesPerPage() {
     return window.innerWidth <= 768 ? 3 : 6;
 }
@@ -109,6 +131,7 @@ function createPropertyCard(fields) {
     const name = fields[cols.NAME] || 'Properti Tanpa Nama';
     const location = fields[cols.LOCATION] || 'Tidak ditentukan';
     const area = fields[cols.AREA] || 'N/A';
+    const areaUnit = fields[cols.AREA_UNIT] || 'm²';
     const bedrooms = fields[cols.BEDROOMS] || 'N/A';
     const bathrooms = fields[cols.BATHROOMS] || 'N/A';
     const price = fields[cols.PRICE];
@@ -146,7 +169,7 @@ function createPropertyCard(fields) {
             </p>
             <div class="property-area">
                 <i class="fas fa-expand-arrows-alt"></i>
-                ${area} m²
+                ${formatAreaDisplay(area, areaUnit)}
             </div>
             <div class="property-features">
                 <span class="feature">
@@ -215,7 +238,7 @@ async function showPropertyModal(fields) {
 
     const name = fields[cols.NAME] || "Properti";
     const location = fields[cols.LOCATION] || "-";
-    const area = fields[cols.AREA] ? `${fields[cols.AREA]} m²` : "-";
+    const area = formatAreaDisplay(fields[cols.AREA], fields[cols.AREA_UNIT]) || "-";
     const bedrooms = fields[cols.BEDROOMS] ? `${fields[cols.BEDROOMS]} Kamar` : "-";
     const bathrooms = fields[cols.BATHROOMS] ? `${fields[cols.BATHROOMS]} Kamar Mandi` : "-";
     const price = formatPrice(fields[cols.PRICE]);
@@ -543,7 +566,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     showLoadingState();
     try {
-        const properties = await fetchPropertiesFromAirtable();
+        // Try to get properties from Airtable, fallback to demo data if needed
+        let properties;
+        if (typeof getProperties === 'function') {
+            properties = await getProperties();
+        } else {
+            properties = await fetchPropertiesFromAirtable();
+        }
+        
         console.log('✅ Properties fetched successfully:', properties.length, 'items');
         allProperties = properties; // Store globally
         renderProperties(allProperties, true);
@@ -553,9 +583,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         populateFilters(allProperties); // Populate filters with data
     } catch (error) {
         console.error('❌ Error memuat properti:', error);
-        const propertiesContainer = document.querySelector('.properties-grid');
-        if (propertiesContainer) {
-            propertiesContainer.innerHTML = `<div class="col-span-full text-center py-12"><p class="text-red-500">Gagal memuat properti.</p></div>`;
+        // Try fallback data as last resort
+        if (window.FALLBACK_PROPERTIES) {
+            console.warn('🎭 Using fallback data due to error');
+            allProperties = window.FALLBACK_PROPERTIES;
+            renderProperties(allProperties, true);
+            populateFilters(allProperties);
+        } else {
+            const propertiesContainer = document.querySelector('.properties-grid');
+            if (propertiesContainer) {
+                propertiesContainer.innerHTML = `<div class="col-span-full text-center py-12"><p class="text-red-500">Gagal memuat properti.</p></div>`;
+            }
         }
     }
 

@@ -29,6 +29,7 @@ const APP_CONFIG = {
         NAME: 'Name',
         LOCATION: 'Location',
         AREA: 'Area',
+        AREA_UNIT: 'AreaUnit',
         BEDROOMS: 'Bedrooms',
         BATHROOMS: 'Bathrooms',
         PRICE: 'Price',
