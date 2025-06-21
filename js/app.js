@@ -57,19 +57,34 @@ function formatAreaDisplay(area, unit) {
     const numArea = parseFloat(area);
     if (isNaN(numArea)) return 'N/A';
     
-    // Auto-detect best unit if not specified
-    if (!unit || unit === '') {
-        // If area >= 5000 m², assume it might be better displayed in hectares
-        if (numArea >= 5000) {
-            unit = 'ha';
-            const convertedArea = numArea / 10000;
-            return `${convertedArea.toFixed(4)} ${unit}`;
+    // Normalize unit variations
+    let normalizedUnit = unit ? unit.toLowerCase().trim() : '';
+    
+    // Handle different unit formats
+    if (normalizedUnit === 'hektare' || normalizedUnit === 'hectare' || normalizedUnit === 'ha') {
+        // Area is already in hectares
+        return `${numArea} ha`;
+    } else if (normalizedUnit === 'm²' || normalizedUnit === 'm2' || normalizedUnit === 'meter persegi') {
+        // Area is in square meters
+        if (numArea >= 10000) {
+            // Convert large m² to hectares for better readability
+            const hectares = (numArea / 10000).toFixed(2);
+            return `${hectares} ha`;
         } else {
-            unit = 'm²';
+            return `${numArea} m²`;
+        }
+    } else if (!unit || unit === '') {
+        // Auto-detect best unit if not specified
+        if (numArea >= 10000) {
+            const hectares = (numArea / 10000).toFixed(2);
+            return `${hectares} ha`;
+        } else {
+            return `${numArea} m²`;
         }
     }
     
-    return `${numArea} ${unit}`;
+    // Default fallback
+    return `${numArea} ${unit || 'm²'}`;
 }
 
 function getPropertiesPerPage() {
@@ -132,6 +147,15 @@ function createPropertyCard(fields) {
     const location = fields[cols.LOCATION] || 'Tidak ditentukan';
     const area = fields[cols.AREA] || 'N/A';
     const areaUnit = fields[cols.AREA_UNIT] || 'm²';
+    
+    // Debug logging untuk area dan unit
+    console.log(`🏠 ${name}:`, {
+        area: area,
+        areaUnit: areaUnit,
+        rawAreaData: fields[cols.AREA],
+        rawUnitData: fields[cols.AREA_UNIT],
+        allFields: fields
+    });
     const bedrooms = fields[cols.BEDROOMS] || 'N/A';
     const bathrooms = fields[cols.BATHROOMS] || 'N/A';
     const price = fields[cols.PRICE];
@@ -239,6 +263,13 @@ async function showPropertyModal(fields) {
     const name = fields[cols.NAME] || "Properti";
     const location = fields[cols.LOCATION] || "-";
     const area = formatAreaDisplay(fields[cols.AREA], fields[cols.AREA_UNIT]) || "-";
+    
+    // Debug modal data
+    console.log(`📋 Modal ${name}:`, {
+        area: fields[cols.AREA],
+        unit: fields[cols.AREA_UNIT],
+        formatted: area
+    });
     const bedrooms = fields[cols.BEDROOMS] ? `${fields[cols.BEDROOMS]} Kamar` : "-";
     const bathrooms = fields[cols.BATHROOMS] ? `${fields[cols.BATHROOMS]} Kamar Mandi` : "-";
     const price = formatPrice(fields[cols.PRICE]);
