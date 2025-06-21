@@ -530,17 +530,9 @@ async function sendToTelegram(message) {
         }
     }
     
-    // All methods failed, offer email fallback
-    console.warn('⚠️ All Telegram methods failed, offering email fallback');
-    const useEmailFallback = confirm(
-        'Tidak dapat mengirim pesan via Telegram. Apakah Anda ingin membuka email sebagai alternatif?'
-    );
-    
-    if (useEmailFallback) {
-        return sendViaEmailFallback(message);
-    } else {
-        throw new Error('Gagal mengirim pesan: Semua metode pengiriman tidak berhasil');
-    }
+    // All methods failed, throw an informative error
+    console.error('⚠️ All Telegram methods failed.');
+    throw new Error('Gagal mengirim pesan: Semua metode pengiriman tidak berhasil. Mohon periksa konfigurasi dan koneksi Anda, atau coba lagi nanti.');
 }
 
 // Direct method (original implementation with enhanced error handling)
@@ -591,7 +583,8 @@ async function sendToTelegramViaGet(message, botToken, chatId) {
 async function sendToTelegramViaCORSProxy(message, botToken, chatId) {
     const corsProxies = [
         'https://api.allorigins.win/raw?url=',
-        'https://corsproxy.io/?'
+        'https://corsproxy.io/?',
+        'https://thingproxy.freeboard.io/fetch/' // Alternative proxy
     ];
     
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -794,7 +787,15 @@ document.addEventListener('DOMContentLoaded', async function() {
                 this.reset();
                 hideBuyModal();
             } catch (error) {
-                alert('Gagal mengirim permintaan. Silakan coba lagi.');
+                console.error("Error sending interest form:", error);
+                const useEmailFallback = confirm(
+                    'Gagal mengirim permintaan via Telegram. Apakah Anda ingin mencoba mengirim via email sebagai gantinya?'
+                );
+                if (useEmailFallback) {
+                    sendViaEmailFallback(message);
+                } else {
+                    alert('Gagal mengirim permintaan. Silakan coba lagi atau hubungi kami langsung.');
+                }
             } finally {
                 submitButton.textContent = 'Saya Tertarik';
                 submitButton.disabled = false;
@@ -823,7 +824,15 @@ document.addEventListener('DOMContentLoaded', async function() {
                 alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.');
                 this.reset();
             } catch (error) {
-                alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi kami langsung.');
+                console.error("Error sending contact form:", error);
+                const useEmailFallback = confirm(
+                    'Gagal mengirim pesan via Telegram. Apakah Anda ingin mencoba mengirim via email sebagai gantinya?'
+                );
+                if (useEmailFallback) {
+                    sendViaEmailFallback(message);
+                } else {
+                    alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi kami langsung.');
+                }
             } finally {
                 submitButton.innerHTML = originalText;
                 submitButton.disabled = false;
