@@ -1,6 +1,6 @@
 // Murakabi Property - Configuration
-// Copy this file to config.js and fill with your actual values
-// NEVER commit config.js with real credentials to version control
+// IMPORTANT: Replace placeholder values with your actual credentials
+// NEVER commit this file with real credentials to version control
 
 const CONFIG = {
     // Airtable Configuration
@@ -17,6 +17,7 @@ const CONFIG = {
             BATHROOMS: 'Bathrooms',
             PRICE: 'Price',
             IMAGE: 'Image',
+            DESCRIPTION: 'Description',
             MAP_LINK: 'MapLink',
             SOLD: 'Sold'
         }
@@ -40,7 +41,7 @@ const CONFIG = {
         NETLIFY_FORMS: true
     },
 
-    // Telegram Bot (Updated with new credentials)
+    // Telegram Bot Configuration (for notifications)
     TELEGRAM: {
         BOT_TOKEN: '7554674052:AAEpEAx-sChhjwiLVIUlmqhbUlT46beyhew',
         CHAT_ID: '908233061'
@@ -52,7 +53,7 @@ const CONFIG = {
     },
 
     // Development/Production flags
-    ENVIRONMENT: 'production', // 'development' or 'production'
+    ENVIRONMENT: 'production',
     DEBUG: false
 };
 

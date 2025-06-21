@@ -482,40 +482,155 @@ function filterProperties() {
 
 // --- End of Filter Logic ---
 
+// Enhanced Telegram integration with multiple fallback methods
 async function sendToTelegram(message) {
     const config = window.APP_CONFIG;
     if (!config || !config.TELEGRAM_BOT_TOKEN || !config.TELEGRAM_CHAT_ID) {
-        console.error('Konfigurasi Telegram tidak lengkap.');
+        console.error('❌ Konfigurasi Telegram tidak lengkap:', {
+            hasConfig: !!config,
+            hasToken: !!(config && config.TELEGRAM_BOT_TOKEN),
+            hasChatId: !!(config && config.TELEGRAM_CHAT_ID)
+        });
         throw new Error('Gagal mengirim pesan: Konfigurasi tidak lengkap.');
     }
-    const url = `https://api.telegram.org/bot${config.TELEGRAM_BOT_TOKEN}/sendMessage`;
     
-    try {
-        const payload = {
-            chat_id: config.TELEGRAM_CHAT_ID,
-            text: message,
-            parse_mode: 'HTML'
-        };
-        console.log('📨 Sending Telegram payload:', payload);
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-
-        const result = await response.json().catch(() => null);
-        console.log('🤖 Telegram response status:', response.status, result);
-
-        if (!response.ok || (result && result.ok === false)) {
-            const errMsg = result && result.description ? result.description : 'Unknown Telegram API error';
-            throw new Error(`Gagal mengirim pesan ke Telegram: ${errMsg}`);
-        }
-        return result;
-    } catch (error) {
-        console.error('❌ Error saat mengirim ke Telegram:', error);
-        throw error;
+    // Check for placeholder values
+    if (config.TELEGRAM_BOT_TOKEN.includes('PLACEHOLDER') || config.TELEGRAM_CHAT_ID.includes('PLACEHOLDER')) {
+        console.error('❌ Menggunakan placeholder credentials untuk Telegram');
+        throw new Error('Gagal mengirim pesan: Credentials belum dikonfigurasi.');
     }
+    
+    console.log('📨 Attempting to send message to Telegram...');
+    
+    // Try multiple methods in order of preference
+    const methods = [
+        {
+            name: 'Direct POST',
+            func: () => sendToTelegramDirect(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
+        },
+        {
+            name: 'GET via Image',
+            func: () => sendToTelegramViaGet(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
+        },
+        {
+            name: 'CORS Proxy',
+            func: () => sendToTelegramViaCORSProxy(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
+        }
+    ];
+    
+    for (const method of methods) {
+        try {
+            console.log(`🔄 Trying method: ${method.name}`);
+            const result = await method.func();
+            console.log(`✅ Success with method: ${method.name}`);
+            return result;
+        } catch (error) {
+            console.warn(`❌ Method ${method.name} failed:`, error.message);
+            continue;
+        }
+    }
+    
+    // All methods failed, offer email fallback
+    console.warn('⚠️ All Telegram methods failed, offering email fallback');
+    const useEmailFallback = confirm(
+        'Tidak dapat mengirim pesan via Telegram. Apakah Anda ingin membuka email sebagai alternatif?'
+    );
+    
+    if (useEmailFallback) {
+        return sendViaEmailFallback(message);
+    } else {
+        throw new Error('Gagal mengirim pesan: Semua metode pengiriman tidak berhasil');
+    }
+}
+
+// Direct method (original implementation with enhanced error handling)
+async function sendToTelegramDirect(message, botToken, chatId) {
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const payload = {
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'HTML'
+    };
+    
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    
+    const result = await response.json();
+    if (!response.ok || !result.ok) {
+        throw new Error(result.description || `HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    return { success: true, method: 'Direct POST', result };
+}
+
+// GET method using Image tag (works around some CORS issues)
+async function sendToTelegramViaGet(message, botToken, chatId) {
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodedMessage}&parse_mode=HTML`;
+    
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve({ success: true, method: 'GET via Image' });
+        img.onerror = () => reject(new Error('GET request via Image failed'));
+        img.src = url;
+        
+        // Timeout after 5 seconds
+        setTimeout(() => {
+            reject(new Error('GET via Image timeout'));
+        }, 5000);
+    });
+}
+
+// CORS Proxy method
+async function sendToTelegramViaCORSProxy(message, botToken, chatId) {
+    const corsProxies = [
+        'https://api.allorigins.win/raw?url=',
+        'https://corsproxy.io/?'
+    ];
+    
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const payload = {
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'HTML'
+    };
+    
+    for (const proxy of corsProxies) {
+        try {
+            const proxyUrl = proxy + encodeURIComponent(url);
+            const response = await fetch(proxyUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            
+            const result = await response.json();
+            if (result.ok) {
+                return { success: true, method: `CORS Proxy (${proxy})`, result };
+            }
+        } catch (error) {
+            console.warn(`CORS proxy ${proxy} failed:`, error.message);
+            continue;
+        }
+    }
+    
+    throw new Error('All CORS proxy attempts failed');
+}
+
+// Email fallback method
+function sendViaEmailFallback(message, recipientEmail = 'info@murakabiproperty.co.id') {
+    const subject = encodeURIComponent('Pesan dari Website Murakabi Property');
+    const body = encodeURIComponent(message);
+    const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    
+    window.open(mailtoLink, '_blank');
+    return { success: true, method: 'Email Fallback' };
 }
 
 // Utility to hide the property modal
@@ -688,33 +803,35 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     // Contact form submission
-    const contactForm = document.querySelector('.contact-form');
-    if(contactForm){
-        contactForm.addEventListener('submit', async function(e){
+    const contactForm = document.querySelector(".contact-form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            const name = this.querySelector('input[placeholder="Nama Anda"]').value;
-            const email = this.querySelector('input[placeholder="Email Anda"]').value;
-            const messageText = this.querySelector('textarea').value;
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const messageText = contactForm.querySelector('textarea[name="message"]').value;
             
-            const message = `✉️ Pesan Baru dari Formulir Kontak\n\nNama: ${name}\nEmail: ${email}\nPesan:\n${messageText}`;
-
+            const message = `📧 Pesan Kontak Baru dari Website\n\nNama: ${name}\nEmail: ${email}\nPesan:\n${messageText}`;
+            
             const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonHTML = submitButton.innerHTML;
-            submitButton.innerHTML = 'Mengirim...';
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
             submitButton.disabled = true;
 
             try {
                 await sendToTelegram(message);
-                alert('Terima kasih! Pesan Anda telah terkirim.');
+                alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.');
                 this.reset();
-            } catch(error) {
-                alert('Gagal mengirim pesan. Silakan coba lagi.');
+            } catch (error) {
+                alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi kami langsung.');
             } finally {
-                submitButton.innerHTML = originalButtonHTML;
+                submitButton.innerHTML = originalText;
                 submitButton.disabled = false;
             }
         });
     }
+
+
 });
 // --- End of Logic Integration --- 
 // --- End of Logic from old main.js --- 
