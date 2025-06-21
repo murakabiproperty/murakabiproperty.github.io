@@ -500,17 +500,17 @@ async function sendToTelegram(message) {
         throw new Error('Gagal mengirim pesan: Credentials belum dikonfigurasi.');
     }
     
-    console.log('📨 Attempting to send message to Telegram...');
+    console.log('📨 Attempting to send message to Telegram...', config.TELEGRAM_CHAT_ID);
     
     // Try multiple methods in order of preference
     const methods = [
         {
-            name: 'Direct POST',
-            func: () => sendToTelegramDirect(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
-        },
-        {
             name: 'GET via Image',
             func: () => sendToTelegramViaGet(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
+        },
+        {
+            name: 'Direct POST',
+            func: () => sendToTelegramDirect(message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID)
         },
         {
             name: 'CORS Proxy',
@@ -616,14 +616,70 @@ async function sendToTelegramViaCORSProxy(message, botToken, chatId) {
     throw new Error('All CORS proxy attempts failed');
 }
 
-// Email fallback method
+// Enhanced email fallback with better formatting
 function sendViaEmailFallback(message, recipientEmail = 'info@murakabiproperty.co.id') {
     const subject = encodeURIComponent('Pesan dari Website Murakabi Property');
-    const body = encodeURIComponent(message);
+    const body = encodeURIComponent(message.replace(/<[^>]*>/g, '')); // Remove HTML tags
     const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
     
     window.open(mailtoLink, '_blank');
     return { success: true, method: 'Email Fallback' };
+}
+
+// WhatsApp fallback solution
+function sendViaWhatsAppFallback(message, phoneNumber = '6281152219988') {
+    // Clean HTML tags and format for WhatsApp
+    const whatsappMessage = message
+        .replace(/<b>/g, '*').replace(/<\/b>/g, '*')
+        .replace(/<i>/g, '_').replace(/<\/i>/g, '_')
+        .replace(/<[^>]*>/g, '') // Remove remaining HTML tags
+        .replace(/&lt;/g, '<').replace(/&gt;/g, '>'); // Decode HTML entities
+    
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappLink, '_blank');
+    return { success: true, method: 'WhatsApp Fallback' };
+}
+
+// Show fallback options to user
+function showFallbackOptions(message) {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        background: rgba(0,0,0,0.8); z-index: 10000; display: flex; 
+        align-items: center; justify-content: center;
+    `;
+    
+    modal.innerHTML = `
+        <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; text-align: center;">
+            <h3 style="color: #333; margin-bottom: 20px;">Pesan Tidak Dapat Dikirim Otomatis</h3>
+            <p style="color: #666; margin-bottom: 30px;">Pilih cara alternatif untuk mengirim pesan Anda:</p>
+            
+            <div style="margin-bottom: 20px;">
+                <button onclick="sendViaWhatsAppFallback('${message.replace(/'/g, "\\'")}'); this.closest('div').remove();" 
+                        style="background: #25D366; color: white; padding: 15px 25px; border: none; border-radius: 5px; margin: 10px; cursor: pointer; font-size: 16px;">
+                    📱 Kirim via WhatsApp
+                </button>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <button onclick="sendViaEmailFallback('${message.replace(/'/g, "\\'")}'); this.closest('div').remove();" 
+                        style="background: #007bff; color: white; padding: 15px 25px; border: none; border-radius: 5px; margin: 10px; cursor: pointer; font-size: 16px;">
+                    📧 Kirim via Email
+                </button>
+            </div>
+            
+            <div>
+                <button onclick="this.closest('div').remove();" 
+                        style="background: #6c757d; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                    Batal
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
 }
 
 // Utility to hide the property modal
@@ -788,13 +844,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 hideBuyModal();
             } catch (error) {
                 console.error("Error sending interest form:", error);
-                const useEmailFallback = confirm(
-                    'Gagal mengirim permintaan via Telegram. Apakah Anda ingin mencoba mengirim via email sebagai gantinya?'
+                
+                // Show enhanced fallback options
+                const shouldShowFallback = confirm(
+                    'Pesan tidak dapat dikirim secara otomatis. Apakah Anda ingin menggunakan cara alternatif (WhatsApp/Email)?'
                 );
-                if (useEmailFallback) {
-                    sendViaEmailFallback(message);
+                
+                if (shouldShowFallback) {
+                    showFallbackOptions(message);
                 } else {
-                    alert('Gagal mengirim permintaan. Silakan coba lagi atau hubungi kami langsung.');
+                    alert('Permintaan gagal dikirim. Silakan coba lagi nanti atau hubungi kami langsung di 08115221998.');
                 }
             } finally {
                 submitButton.textContent = 'Saya Tertarik';
@@ -825,13 +884,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 this.reset();
             } catch (error) {
                 console.error("Error sending contact form:", error);
-                const useEmailFallback = confirm(
-                    'Gagal mengirim pesan via Telegram. Apakah Anda ingin mencoba mengirim via email sebagai gantinya?'
+                
+                // Show enhanced fallback options
+                const shouldShowFallback = confirm(
+                    'Pesan tidak dapat dikirim secara otomatis. Apakah Anda ingin menggunakan cara alternatif (WhatsApp/Email)?'
                 );
-                if (useEmailFallback) {
-                    sendViaEmailFallback(message);
+                
+                if (shouldShowFallback) {
+                    showFallbackOptions(message);
                 } else {
-                    alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi kami langsung.');
+                    alert('Pesan gagal dikirim. Silakan coba lagi nanti atau hubungi kami langsung di 08115221998.');
                 }
             } finally {
                 submitButton.innerHTML = originalText;
