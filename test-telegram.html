@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Telegram Integration - Murakabi Property</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-form {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Telegram Integration</h1>
+        <p><strong>Bot Token:</strong> 7554674052:AAE***</p>
+        <p><strong>Chat ID:</strong> 908233061</p>
+        
+        <div class="test-form">
+            <h3>📤 Test Direct Message</h3>
+            <button onclick="testDirectMessage()" id="testBtn">Kirim Test Message</button>
+            <div id="testStatus"></div>
+        </div>
+        
+        <div class="test-form">
+            <h3>📋 Test Contact Form</h3>
+            <form id="contactTestForm">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" value="Test User" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="test@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" rows="4" required>Ini adalah pesan test untuk verifikasi Telegram integration.</textarea>
+                </div>
+                <button type="submit">Kirim Contact Form Test</button>
+            </form>
+            <div id="contactStatus"></div>
+        </div>
+        
+        <div class="test-form">
+            <h3>🏠 Test Property Interest Form</h3>
+            <form id="propertyTestForm">
+                <div class="form-group">
+                    <label for="propName">Nama:</label>
+                    <input type="text" id="propName" name="name" value="Test Pembeli" required>
+                </div>
+                <div class="form-group">
+                    <label for="propPhone">Nomor Telepon:</label>
+                    <input type="tel" id="propPhone" name="phone" value="081234567890" required>
+                </div>
+                <input type="hidden" name="property-name" value="Villa Premium Test">
+                <button type="submit">Kirim Interest Form Test</button>
+            </form>
+            <div id="propertyStatus"></div>
+        </div>
+    </div>
+
+    <script>
+        async function testDirectMessage() {
+            const btn = document.getElementById('testBtn');
+            const status = document.getElementById('testStatus');
+            
+            btn.disabled = true;
+            btn.textContent = 'Mengirim...';
+            status.innerHTML = '<div class="info">🔄 Mengirim test message...</div>';
+            
+            const testMessage = `🧪 <b>TEST PESAN - MURAKABI PROPERTY</b>
+
+✅ <b>Status:</b> Telegram integration berhasil!
+🤖 <b>Bot Token:</b> Terverifikasi
+📱 <b>Chat ID:</b> 908233061
+⏰ <b>Waktu:</b> ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}
+
+---
+<i>Pesan test ini dikirim untuk memverifikasi konfigurasi Telegram.</i>`;
+            
+            try {
+                const success = await sendTestMessage(testMessage);
+                if (success) {
+                    status.innerHTML = '<div class="success">✅ SUCCESS! Pesan test berhasil dikirim ke Telegram!</div>';
+                } else {
+                    status.innerHTML = '<div class="error">❌ FAILED! Pesan tidak berhasil dikirim. Periksa console untuk detail.</div>';
+                }
+            } catch (error) {
+                status.innerHTML = '<div class="error">💥 ERROR! ' + error.message + '</div>';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Kirim Test Message';
+            }
+        }
+        
+        // Test contact form
+        document.getElementById('contactTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const status = document.getElementById('contactStatus');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengirim...';
+            status.innerHTML = '<div class="info">🔄 Mengirim contact form test...</div>';
+            
+            try {
+                const formData = new FormData(this);
+                const message = `🧪 <b>TEST CONTACT FORM - MURAKABI PROPERTY</b>
+
+👤 <b>Nama:</b> ${formData.get('name')}
+📧 <b>Email:</b> ${formData.get('email')}
+💬 <b>Pesan:</b>
+${formData.get('message')}
+
+⏰ <b>Waktu:</b> ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}
+🌐 <b>Sumber:</b> Test Page
+
+---
+<i>Ini adalah test message untuk contact form.</i>`;
+
+                const success = await sendTestMessage(message);
+                if (success) {
+                    status.innerHTML = '<div class="success">✅ SUCCESS! Contact form test berhasil dikirim!</div>';
+                    this.reset();
+                } else {
+                    status.innerHTML = '<div class="error">❌ FAILED! Contact form test gagal dikirim.</div>';
+                }
+            } catch (error) {
+                status.innerHTML = '<div class="error">💥 ERROR! ' + error.message + '</div>';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Kirim Contact Form Test';
+            }
+        });
+        
+        // Test property interest form
+        document.getElementById('propertyTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const status = document.getElementById('propertyStatus');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengirim...';
+            status.innerHTML = '<div class="info">🔄 Mengirim property interest test...</div>';
+            
+            try {
+                const formData = new FormData(this);
+                const message = `🧪 <b>TEST PROPERTY INTEREST - MURAKABI PROPERTY</b>
+
+🏘️ <b>Properti:</b> ${formData.get('property-name')}
+👤 <b>Nama:</b> ${formData.get('name')}
+📱 <b>Telepon:</b> ${formData.get('phone')}
+
+⏰ <b>Waktu:</b> ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}
+🌐 <b>Sumber:</b> Test Page
+
+---
+<i>Ini adalah test message untuk property interest form.</i>`;
+
+                const success = await sendTestMessage(message);
+                if (success) {
+                    status.innerHTML = '<div class="success">✅ SUCCESS! Property interest test berhasil dikirim!</div>';
+                    this.reset();
+                } else {
+                    status.innerHTML = '<div class="error">❌ FAILED! Property interest test gagal dikirim.</div>';
+                }
+            } catch (error) {
+                status.innerHTML = '<div class="error">💥 ERROR! ' + error.message + '</div>';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Kirim Interest Form Test';
+            }
+        });
+        
+        async function sendTestMessage(message) {
+            const botToken = '7554674052:AAEpEAx-sChhjwiLVIUlmqhbUlT46beyhew';
+            const chatId = '908233061';
+            
+            try {
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('Telegram API Response:', result);
+                return result.ok;
+            } catch (error) {
+                console.error('Error sending message:', error);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html> 
