@@ -70,10 +70,11 @@ const FALLBACK_PROPERTIES = [
 
 // Function untuk detect apakah menggunakan fallback data
 function isUsingFallbackData() {
-    return !CONFIG || 
-           CONFIG.AIRTABLE.API_KEY === 'PLACEHOLDER_API_KEY' || 
-           CONFIG.AIRTABLE.API_KEY.includes('your_') ||
-           !CONFIG.AIRTABLE.API_KEY;
+    return !window.CONFIG || 
+           !window.CONFIG.AIRTABLE ||
+           window.CONFIG.AIRTABLE.API_KEY === 'PLACEHOLDER_API_KEY' || 
+           window.CONFIG.AIRTABLE.API_KEY.includes('your_') ||
+           !window.CONFIG.AIRTABLE.API_KEY;
 }
 
 // Function untuk get properties (fallback atau real)
@@ -87,8 +88,9 @@ async function getProperties() {
         
         return FALLBACK_PROPERTIES;
     } else {
+        console.log('✅ CONFIG valid, fetching from Airtable...');
         // Use real Airtable API
-        return await fetchFromAirtable();
+        return await fetchPropertiesFromAirtable();
     }
 }
 
