@@ -1,9 +1,0 @@
-tkinter
-sqlite3
-hashlib
-datetime
-os
-json
-pathlib
-requests
-Pillow 
