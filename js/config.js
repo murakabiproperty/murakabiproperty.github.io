@@ -26,8 +26,8 @@ const CONFIG = {
 
     // Telegram Bot Configuration
     TELEGRAM: {
-        BOT_TOKEN: '7633063242:AAHKGy4bb84_nS47v3bN0OQzzT_o0dqCmNo',
-        CHAT_ID: '2142354455'
+        BOT_TOKEN: '7554674052:AAEpEAx-sChhjwiLVIUlmqhbUlT46beyhew',
+        CHAT_ID: '908233061'
     },
 
     // Contact Form Configuration
