@@ -57,34 +57,39 @@ function formatAreaDisplay(area, unit) {
     const numArea = parseFloat(area);
     if (isNaN(numArea)) return 'N/A';
     
+    // Helper function to remove unnecessary .00
+    function formatNumber(num) {
+        return num % 1 === 0 ? num.toString() : num.toFixed(2).replace(/\.?0+$/, '');
+    }
+    
     // Normalize unit variations
     let normalizedUnit = unit ? unit.toLowerCase().trim() : '';
     
     // Handle different unit formats
     if (normalizedUnit === 'hektare' || normalizedUnit === 'hectare' || normalizedUnit === 'ha') {
         // Area is already in hectares
-        return `${numArea} ha`;
+        return `${formatNumber(numArea)} ha`;
     } else if (normalizedUnit === 'm²' || normalizedUnit === 'm2' || normalizedUnit === 'meter persegi') {
         // Area is in square meters
         if (numArea >= 10000) {
             // Convert large m² to hectares for better readability
-            const hectares = (numArea / 10000).toFixed(2);
-            return `${hectares} ha`;
+            const hectares = numArea / 10000;
+            return `${formatNumber(hectares)} ha`;
         } else {
-            return `${numArea} m²`;
+            return `${formatNumber(numArea)} m²`;
         }
     } else if (!unit || unit === '') {
         // Auto-detect best unit if not specified
         if (numArea >= 10000) {
-            const hectares = (numArea / 10000).toFixed(2);
-            return `${hectares} ha`;
+            const hectares = numArea / 10000;
+            return `${formatNumber(hectares)} ha`;
         } else {
-            return `${numArea} m²`;
+            return `${formatNumber(numArea)} m²`;
         }
     }
     
     // Default fallback
-    return `${numArea} ${unit || 'm²'}`;
+    return `${formatNumber(numArea)} ${unit || 'm²'}`;
 }
 
 function getPropertiesPerPage() {
