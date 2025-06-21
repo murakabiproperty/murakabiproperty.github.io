@@ -5,8 +5,8 @@
 const CONFIG = {
     // Airtable Configuration
     AIRTABLE: {
-        API_KEY: 'your_airtable_personal_access_token_here',
-        BASE_ID: 'your_airtable_base_id_here',
+        API_KEY: 'pat0cJUQcyOFxDllX.c2421f2ebdfeba1fdf48d662fa60ef05652a4b2deb095f5c5781362aa795c958',
+        BASE_ID: 'appx1T49Qqh0g3AcF',
         TABLE_NAME: 'Properties',
         COLUMNS: {
             NAME: 'Name',
@@ -51,8 +51,8 @@ const CONFIG = {
     },
 
     // Development/Production flags
-    ENVIRONMENT: 'development', // 'development' or 'production'
-    DEBUG: true
+    ENVIRONMENT: 'production', // 'development' or 'production'
+    DEBUG: false
 };
 
 // Export for use in other files
